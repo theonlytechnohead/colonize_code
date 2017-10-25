@@ -47,7 +47,7 @@ public class gameController : MonoBehaviour {
 	}
 	
 	public void TripleTime () {
-		Time.timeScale = 3f;
+		Time.timeScale = 4f;
 		ResetColours();
 		GameObject.Find("TripleSpeedButton").GetComponent<Image>().color = timeActivatedColour;
 	}
