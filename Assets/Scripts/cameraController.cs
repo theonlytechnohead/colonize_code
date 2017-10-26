@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class cameraController : MonoBehaviour {
 
+	#region Singleton
+	public static Camera mainCamera;
+
+	private void Awake () {
+		if (mainCamera != null) {
+			Debug.LogWarning("More than one instance of mainCamera found!");
+			return;
+		}
+		mainCamera = transform.Find("Camera").GetComponent<Camera>();
+	}
+	#endregion
+
 	// Use this for initialization
 	void Start () {
 		

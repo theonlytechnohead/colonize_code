@@ -8,6 +8,9 @@ public class gameController : MonoBehaviour {
 	public Color timeActivatedColour;
 	public Color normalColour;
 
+	public List<LayerMask> CullingMask;
+	private int currentMask = 0;
+
 	#region Singleton
 	public static gameController instance;
 
@@ -27,6 +30,14 @@ public class gameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.H)) {
+			if (currentMask == CullingMask.Count - 1) {
+				currentMask = 0;
+			} else {
+				currentMask++;
+			}
+			cameraController.mainCamera.cullingMask = CullingMask[currentMask];
+		}
 		if (Input.GetKeyDown("1")) {
 			NormalTime();
 		}

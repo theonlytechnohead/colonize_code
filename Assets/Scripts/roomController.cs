@@ -16,6 +16,7 @@ public class roomController : MonoBehaviour {
 	void Update () {
 		if (room != null & currentRoom == null) {
 			currentRoom = Instantiate(room.prefab, new Vector3(transform.position.x, 1.5f, transform.position.z), transform.rotation);
+			currentRoom.transform.SetParent(transform);
 		}
 	}
 }
