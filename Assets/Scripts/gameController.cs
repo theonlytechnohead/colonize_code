@@ -11,6 +11,8 @@ public class gameController : MonoBehaviour {
 	public List<LayerMask> CullingMask;
 	private int currentMask = 0;
 
+	GameObject ground;
+
 	#region Singleton
 	public static gameController instance;
 
@@ -26,6 +28,7 @@ public class gameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		NormalTime();
+		GameObject ground = GameObject.Find("Ground");
 	}
 	
 	// Update is called once per frame

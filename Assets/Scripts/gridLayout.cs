@@ -15,7 +15,7 @@ public class gridLayout : MonoBehaviour {
 	void Start () {
 		for (int cellRow = -rows; cellRow <= rows; cellRow++) {
 			for (int cell = -columns; cell <= columns; cell++) {
-				Vector3 spawnPos = new Vector3(cellWidthX * cell, 0f, cellHeightZ * cellRow);
+				Vector3 spawnPos = new Vector3(cellWidthX * cell, -1f, cellHeightZ * cellRow);
 				GameObject clone = Instantiate(gridObject, spawnPos, transform.rotation);
 				clone.transform.SetParent(transform);
 			}

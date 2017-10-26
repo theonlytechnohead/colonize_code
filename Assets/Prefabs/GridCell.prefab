@@ -110,3 +110,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomHolder: {fileID: 1787324698552790, guid: 2fe0eb6e85b1842f1b844f2934dc45d1, type: 2}
+  normalMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  outline_diffuse: {fileID: 2100000, guid: da37a47e362be46cfb3f216efa475b08, type: 2}
