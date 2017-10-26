@@ -15,7 +15,7 @@ public class roomController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (room != null & currentRoom == null) {
-			currentRoom = Instantiate(room.prefab, new Vector3(transform.position.x, -1.5f, transform.position.z), transform.rotation);
+			currentRoom = Instantiate(room.prefab, new Vector3(transform.position.x, 1.5f, transform.position.z), transform.rotation);
 		}
 	}
 }
