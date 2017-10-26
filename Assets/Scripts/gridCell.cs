@@ -6,9 +6,7 @@ public class gridCell : MonoBehaviour {
 
 	public GameObject roomHolder;
 	new private Renderer renderer;
-
-	public Material normalMaterial;
-	public Material outline_diffuse;
+	private GameObject newRoom;
 
 	// Use this for initialization
 	void Start () {
@@ -22,18 +20,25 @@ public class gridCell : MonoBehaviour {
 	}
 
 	public void buildRoom (GameObject roomHolder) {
-		GameObject newRoom = Instantiate(roomHolder, new Vector3(transform.position.x, 0f, transform.position.z), transform.rotation);
+		newRoom = Instantiate(roomHolder, new Vector3(transform.position.x, 0f, transform.position.z), transform.rotation);
 		newRoom.transform.SetParent(transform);
 		newRoom.transform.position -= new Vector3(0f, 1f, 0f);
 	}
 
 	void OnMouseDown () {
-		buildRoom(roomHolder);
+		if (newRoom == null) {
+			buildRoom(roomHolder);
+			renderer.material.color = Color.green;
+		}
 	}
 	void OnMouseEnter () {
-		renderer.material.color = Color.yellow;
+		if (newRoom == null) {
+			renderer.material.color = Color.yellow;
+		}
 	}
     void OnMouseExit () {
-		renderer.material.color = Color.white;
+		if (newRoom == null) {
+			renderer.material.color = Color.white;
+		}
     }
 }
