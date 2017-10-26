@@ -111,3 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
   room: {fileID: 11400000, guid: 43f5f8b6aff4f4b2eaa8d7248386015e, type: 2}
+  normalColour: {r: 1, g: 1, b: 1, a: 1}
+  highlightColour: {r: 1, g: 0.74509805, b: 0, a: 1}
+  builtColour: {r: 0, g: 1, b: 0, a: 1}

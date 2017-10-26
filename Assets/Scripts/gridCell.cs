@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class gridCell : MonoBehaviour {
 
+	public GameObject defaultStructure;
 	public GameObject roomHolder;
 	new private Renderer renderer;
 	private GameObject newRoom;
 
+	public Color normalColour;
+	public Color highlightColour;
+	public Color builtColour;
+
 	// Use this for initialization
 	void Start () {
-		//buildRoom(roomHolder);
+		buildRoom(defaultStructure);
 		renderer = GetComponent<Renderer>();
 	}
 	
@@ -28,17 +33,17 @@ public class gridCell : MonoBehaviour {
 	void OnMouseDown () {
 		if (newRoom == null) {
 			buildRoom(roomHolder);
-			renderer.material.color = Color.green;
+			renderer.material.color = builtColour;
 		}
 	}
 	void OnMouseEnter () {
 		if (newRoom == null) {
-			renderer.material.color = Color.yellow;
+			renderer.material.color = highlightColour;
 		}
 	}
     void OnMouseExit () {
 		if (newRoom == null) {
-			renderer.material.color = Color.white;
+			renderer.material.color = normalColour;
 		}
     }
 }

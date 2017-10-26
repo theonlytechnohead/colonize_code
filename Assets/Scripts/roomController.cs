@@ -6,7 +6,11 @@ public class roomController : MonoBehaviour {
 
 	public GameObject currentRoom;
 	public Room room;
-	new private Renderer renderer;
+	private Renderer renderer;
+
+		public Color normalColour;
+	public Color highlightColour;
+	public Color builtColour;
 	
 	// Use this for initialization
 	void Start () {
@@ -29,17 +33,17 @@ public class roomController : MonoBehaviour {
 	void OnMouseDown () {
 		if (currentRoom == null) {
 			buildRoom(room);
-			renderer.material.color = Color.gray;
+			renderer.material.color = builtColour;
 		}
 	}
 	void OnMouseEnter () {
 		if (currentRoom == null) {
-			renderer.material.color = Color.yellow;
+			renderer.material.color = highlightColour;
 		}
 	}
     void OnMouseExit () {
 		if (currentRoom == null) {
-			renderer.material.color = Color.white;
+			renderer.material.color = normalColour;
 		}
     }
 }
