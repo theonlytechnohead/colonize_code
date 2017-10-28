@@ -27,7 +27,7 @@ public class gridCell : MonoBehaviour {
 	public void buildRoom (GameObject roomHolder) {
 		newRoom = Instantiate(roomHolder, new Vector3(transform.position.x, 0f, transform.position.z), transform.rotation);
 		newRoom.transform.SetParent(transform);
-		newRoom.transform.position -= new Vector3(0f, 1f, 0f);
+		newRoom.transform.position += new Vector3(0f, 0.5f, 0f);
 	}
 
 	void OnMouseDown () {

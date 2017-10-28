@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713169d1843464923a977e93f1ceaec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultStructure: {fileID: 1675666756402026, guid: 3ba6a290c00eb4afda559bc361884974,
+  defaultStructure: {fileID: 1144012145650252, guid: 3ba6a290c00eb4afda559bc361884974,
     type: 2}
   roomHolder: {fileID: 1787324698552790, guid: 2fe0eb6e85b1842f1b844f2934dc45d1, type: 2}
   normalColour: {r: 1, g: 1, b: 1, a: 1}

@@ -8,13 +8,14 @@ public class roomController : MonoBehaviour {
 	public Room room;
 	private Renderer renderer;
 
-		public Color normalColour;
+	public Color normalColour;
 	public Color highlightColour;
 	public Color builtColour;
 	
 	// Use this for initialization
 	void Start () {
 		renderer = GetComponent<Renderer>();
+		transform.position = new Vector3(transform.position.x, -3f, transform.position.z);
 	}
 	
 	// Update is called once per frame

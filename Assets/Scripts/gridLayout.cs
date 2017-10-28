@@ -11,20 +11,19 @@ public class gridLayout : MonoBehaviour {
 	public int rows;
 	public int columns;
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
+		transform.position = new Vector3(0f, -4f, 0f);
+		buildGrid();
+	}
+
+	void buildGrid () {
 		for (int cellRow = -rows; cellRow <= rows; cellRow++) {
 			for (int cell = -columns; cell <= columns; cell++) {
 				Vector3 spawnPos = new Vector3(cellWidthX * cell, 0f, cellHeightZ * cellRow);
 				GameObject clone = Instantiate(gridObject, spawnPos, transform.rotation);
 				clone.transform.SetParent(transform);
-				clone.transform.position -= new Vector3(0f, 1.25f, 0f);
+				clone.transform.position = new Vector3(spawnPos.x, -3.5f, spawnPos.z);
 			}
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
