@@ -79,7 +79,7 @@ public class cameraController : MonoBehaviour {
 		newPos.z = Mathf.Clamp(newPos.z, -50, 50);
 		// Apply the transformation!
 		cameraMoveTarget.position = newPos;
-		transform.rotation = cameraMoveTarget.rotation;
+		transform.rotation = Quaternion.Slerp(transform.rotation, cameraMoveTarget.rotation, 10f * Time.deltaTime);
 	}
 
 	void LateUpdate () {

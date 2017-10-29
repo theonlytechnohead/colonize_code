@@ -13,6 +13,11 @@ public class gameController : MonoBehaviour {
 	public GameObject levelText;
 	public List<string> levelNames;
 
+	public int warpSpeed = 1;
+
+	public float outsideTemperature = 25f;
+	public float insideTemperature = 20f;
+
 	#region Singleton
 	public static gameController instance;
 
@@ -42,7 +47,7 @@ public class gameController : MonoBehaviour {
 			TripleTime();
 		}
 		if (Input.GetKeyDown("space")) {
-			if (Time.timeScale == 0f) {
+			if (warpSpeed == 0) {
 				NormalTime();
 			}
 			else {
@@ -64,27 +69,27 @@ public class gameController : MonoBehaviour {
 			levelText.GetComponent<Text>().text = levelNames[currentLevel];
 		}
 	}
-	
+
 	public void TripleTime () {
-		Time.timeScale = 4f;
+		warpSpeed = 4;
 		ResetColours();
 		GameObject.Find("TripleSpeedButton").GetComponent<Image>().color = timeActivatedColour;
 	}
 
 	public void DoubleTime () {
-		Time.timeScale = 2f;
+		warpSpeed = 2;
 		ResetColours();
 		GameObject.Find("DoubleSpeedButton").GetComponent<Image>().color = timeActivatedColour;
 	}
 
 	public void NormalTime () {
-		Time.timeScale = 1f;
+		warpSpeed = 1;
 		ResetColours();
 		GameObject.Find("NormalSpeedButton").GetComponent<Image>().color = timeActivatedColour;
 	}
 
 	public void PauseTime () {
-		Time.timeScale = 0f;
+		warpSpeed = 0;
 		ResetColours();
 		GameObject.Find("PauseButton").GetComponent<Image>().color = timeActivatedColour;
 	}
