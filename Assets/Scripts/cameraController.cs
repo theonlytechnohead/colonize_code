@@ -7,6 +7,8 @@ public class cameraController : MonoBehaviour {
 	public float panSpeed = 30f;
 	public float scrollSpeed = 30f;
 
+	public Transform cameraMoveTarget;
+
 	#region Singleton
 	public static Camera mainCamera;
 
@@ -15,7 +17,7 @@ public class cameraController : MonoBehaviour {
 			Debug.LogWarning("More than one instance of mainCamera found!");
 			return;
 		}
-		mainCamera = transform.Find("Camera").GetComponent<Camera>();
+		mainCamera = GameObject.Find("Camera").GetComponent<Camera>();
 	}
 	#endregion
 
@@ -26,9 +28,12 @@ public class cameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//transform.RotateAround(new Vector3(0, 0, 0), Vector3.up, 20 * Time.deltaTime);
-		Vector3 pos = transform.position;
-		pos = transform.InverseTransformPoint(pos);
+		//// Camera movement and rotation controls
+		// Setup temp position variable
+		Vector3 pos = cameraMoveTarget.transform.position;
+		Vector3 rot = cameraMoveTarget.transform.rotation.eulerAngles;
+		// Translate from world space to local space for proper movment according to current rotation
+		pos = cameraMoveTarget.transform.InverseTransformPoint(pos);
 		if (Input.GetKey(KeyCode.W)) {
 			pos.z += panSpeed * Time.deltaTime;
 		}
@@ -41,33 +46,44 @@ public class cameraController : MonoBehaviour {
 		if (Input.GetKey(KeyCode.D)) {
 			pos.x += panSpeed * Time.deltaTime;
 		}
-		if (Input.GetKey(KeyCode.Q)) {
-			transform.Rotate(0, -1f, 0);
+		if (Input.GetKey(KeyCode.Q)) { // Rotate camera via keyboard
+			rot += new Vector3(0f, -1.5f, 0f);
+			cameraMoveTarget.rotation = Quaternion.Slerp(cameraMoveTarget.rotation, Quaternion.Euler(rot), 100f * Time.deltaTime);
+			//cameraMoveTarget.transform.Rotate(0, -1.5f, 0);
 		}
 		if (Input.GetKey(KeyCode.E)) {
-			transform.Rotate(0, 1f, 0);
+			rot += new Vector3(0f, 1.5f, 0f);
+			cameraMoveTarget.rotation = Quaternion.Slerp(cameraMoveTarget.rotation, Quaternion.Euler(rot), 100f * Time.deltaTime);
 		}
-		if (Input.GetMouseButton(2))
+		if (Input.GetMouseButton(2)) // Rotate camera up/down left/right via holding scrollwheel/middle mouse button
  		{
-			transform.Rotate(0f, Input.GetAxis("Mouse X") * 200f * Time.deltaTime, 0f);
+			cameraMoveTarget.transform.Rotate(0f, Input.GetAxis("Mouse X") * 200f * Time.deltaTime, 0f);
 			mainCamera.transform.Rotate(-Input.GetAxis("Mouse Y") * 200f * Time.deltaTime, 0f, 0f);
+			// Hide and lock the cursor while rotating
 			Cursor.lockState = CursorLockMode.Locked;
         	Cursor.visible = false;
- 		} else {
+ 		} else { // Show and unlock the cursor otherwise
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 		}
 		
-
+		// Applying scrolling to zoom FORWARD/IN (the CENTRE of the screen, not up/down!)
 		float scroll = Input.GetAxis("Mouse ScrollWheel");
 		pos.y -= scroll * scrollSpeed * 30f * Time.deltaTime;
 		pos.z += scroll * scrollSpeed * 30f * Time.deltaTime;
 
-		//Debug.Log(pos);
-		Vector3 newPos = transform.TransformPoint(pos);
+		// Revert back into world space so that clamping workings properly, and can be directly applied
+		Vector3 newPos = cameraMoveTarget.transform.TransformPoint(pos);
 		newPos.x = Mathf.Clamp(newPos.x, -50, 50);
 		newPos.y = Mathf.Clamp(newPos.y, 2, 50);
 		newPos.z = Mathf.Clamp(newPos.z, -50, 50);
-		transform.position = newPos;
+		// Apply the transformation!
+		cameraMoveTarget.position = newPos;
+		transform.rotation = cameraMoveTarget.rotation;
+	}
+
+	void LateUpdate () {
+		Vector3 smoothedPos = Vector3.Lerp(transform.position, cameraMoveTarget.transform.position, 10f * Time.deltaTime);
+		transform.position = smoothedPos;
 	}
 }
