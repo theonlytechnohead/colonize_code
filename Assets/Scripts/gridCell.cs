@@ -25,11 +25,17 @@ public class gridCell : MonoBehaviour {
 	}
 
 	public void buildRoom (GameObject roomHolder) {
-		newRoom = Instantiate(roomHolder, new Vector3(transform.position.x, 0f, transform.position.z), transform.rotation);
-		newRoom.transform.SetParent(transform);
-		newRoom.transform.position += new Vector3(0f, 0.5f, 0f);
+		newRoom = Instantiate(roomHolder, new Vector3(transform.position.x, transform.position.y + 0.9f, transform.position.z), transform.rotation);
+		newRoom.layer = gameObject.layer;
+		//newRoom.transform.SetParent(transform);
+		//newRoom.transform.position += new Vector3(0f, 0.5f, 0f);
 	}
 
+	void OnMouseOver () {
+		if (Input.GetKeyDown(KeyCode.Delete)) {
+			Destroy(gameObject);
+		}
+	}
 	void OnMouseDown () {
 		if (newRoom == null) {
 			buildRoom(roomHolder);

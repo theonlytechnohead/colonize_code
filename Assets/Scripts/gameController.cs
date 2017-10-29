@@ -8,8 +8,10 @@ public class gameController : MonoBehaviour {
 	public Color timeActivatedColour;
 	public Color normalColour;
 
-	public List<LayerMask> CullingMask;
-	private int currentMask = 0;
+	public List<LayerMask> levelMask;
+	public int currentLevel = 0;
+	public GameObject levelText;
+	public List<string> levelNames;
 
 	#region Singleton
 	public static gameController instance;
@@ -30,14 +32,6 @@ public class gameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.H)) {
-			if (currentMask == CullingMask.Count - 1) {
-				currentMask = 0;
-			} else {
-				currentMask++;
-			}
-			cameraController.mainCamera.cullingMask = CullingMask[currentMask];
-		}
 		if (Input.GetKeyDown("1")) {
 			NormalTime();
 		}
@@ -54,6 +48,20 @@ public class gameController : MonoBehaviour {
 			else {
 				PauseTime();
 			}
+		}
+		if (Input.GetKeyDown(KeyCode.PageUp)) {
+			if (currentLevel > 0) {
+				currentLevel--;
+			}
+			cameraController.mainCamera.cullingMask = levelMask[currentLevel];
+			levelText.GetComponent<Text>().text = levelNames[currentLevel];
+		}
+		if (Input.GetKeyDown(KeyCode.PageDown)) {
+			if (currentLevel < levelMask.Count - 1) {
+				currentLevel++;
+			}
+			cameraController.mainCamera.cullingMask = levelMask[currentLevel];
+			levelText.GetComponent<Text>().text = levelNames[currentLevel];
 		}
 	}
 	

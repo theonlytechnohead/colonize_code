@@ -11,7 +11,7 @@ public class dirt : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		renderer = GetComponent<Renderer>();
-		transform.position = new Vector3(transform.position.x, -1.5f, transform.position.z);
+		transform.position += new Vector3(0f, 1.5f, 0f);
 	}
 
 	void OnMouseDown () {

@@ -15,7 +15,7 @@ public class roomController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		renderer = GetComponent<Renderer>();
-		transform.position = new Vector3(transform.position.x, -3f, transform.position.z);
+		transform.position += new Vector3(0f, 0.25f, 0f);
 	}
 	
 	// Update is called once per frame
@@ -25,9 +25,13 @@ public class roomController : MonoBehaviour {
 
 	public void buildRoom (Room roomToBuild) {
 			if (room != null & currentRoom == null) {
-				currentRoom = Instantiate(roomToBuild.prefab, transform.position, transform.rotation);
-				currentRoom.transform.SetParent(transform);
-				currentRoom.transform.position += new Vector3(0f, 2f, 0f);
+				currentRoom = Instantiate(roomToBuild.prefab, new Vector3(transform.position.x, transform.position.y + 2.25f, transform.position.z), transform.rotation);
+				//currentRoom.transform.SetParent(transform);
+				//currentRoom.transform.position += new Vector3(0f, 2f, 0f);
+				currentRoom.layer = gameObject.layer;
+				for (int child = 0; child < currentRoom.transform.childCount; child++) {
+					currentRoom.transform.GetChild(child).gameObject.layer = gameObject.layer;
+				}
 		}
 	}
 

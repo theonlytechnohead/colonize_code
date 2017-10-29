@@ -14,17 +14,6 @@ public class domeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.E) & dome.activeSelf) {
-			hideDome();
-		} else if (Input.GetKeyDown(KeyCode.E)) {
-			showDome();
-		}
+		
 	}
-
-	void hideDome () {
-		dome.SetActive(false);
-	}
-    void showDome () {
-		dome.SetActive(true);
-    }
 }
