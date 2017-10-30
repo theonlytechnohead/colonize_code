@@ -6,18 +6,12 @@ using UnityEngine.UI;
 public class tempPanelController : MonoBehaviour {
 
 	public Text outsideTemp;
-	public Text outsideTempPositive;
-	public Text outsideTempNegative;
+	public Text outsideIndicator;
 	public Text insideTemp;
-	public Text insideTempPositive;
-	public Text insideTempNegative;
+	public Text insideIndicator;
 	public Text celciusIndicator;
 	public Text fahrenheitIndicator;
 
-	public Color activeColour;
-	public Color inactiveColour;
-
-	[HideInInspector]
 	public bool stupidTempSystem = false;
 
 	private float outTemp;
@@ -33,28 +27,22 @@ public class tempPanelController : MonoBehaviour {
 		outTemp = gameController.instance.outsideTemperature;
 		inTemp = gameController.instance.insideTemperature;
 		if (outTemp > 0) {
-			outsideTempPositive.color = activeColour;
-			outsideTempNegative.color = inactiveColour;
+			outsideIndicator.text = "+";
 		}
 		if (outTemp == 0) {
-			outsideTempPositive.color = inactiveColour;
-			outsideTempNegative.color = inactiveColour;
+			outsideIndicator.text = "";
 		}
 		if (outTemp < 0) {
-			outsideTempPositive.color = inactiveColour;
-			outsideTempNegative.color = activeColour;
+			outsideIndicator.text = "-";
 		}
 		if (inTemp > 0) {
-			insideTempPositive.color = activeColour;
-			insideTempNegative.color = inactiveColour;
+			insideIndicator.text = "+";
 		}
 		if (inTemp == 0) {
-			insideTempPositive.color = inactiveColour;
-			insideTempNegative.color = inactiveColour;
+			insideIndicator.text = "";
 		}
 		if (inTemp < 0) {
-			insideTempPositive.color = inactiveColour;
-			insideTempNegative.color = activeColour;
+			insideIndicator.text = "-";
 		}
 		float outTempF = outTemp;
 		float inTempF = inTemp;
@@ -62,7 +50,7 @@ public class tempPanelController : MonoBehaviour {
 			outTempF = gameController.instance.outsideTemperature * 1.8f + 32f;
 			inTempF = gameController.instance.insideTemperature * 1.8f + 32f;
 		}
-		outsideTemp.text = Mathf.Abs(outTempF).ToString();
-		insideTemp.text = Mathf.Abs(inTempF).ToString();
+		outsideTemp.text = Mathf.RoundToInt(Mathf.Abs(outTempF)).ToString();
+		insideTemp.text = Mathf.RoundToInt(Mathf.Abs(inTempF)).ToString();
 	}
 }

@@ -15,7 +15,9 @@ public class gameController : MonoBehaviour {
 
 	public int warpSpeed = 1;
 
-	public int outsideTemperature = 25;
+	[Range(-130, 20)]
+	public int outsideTemperature = -55;
+	[Range(-30, 30)]
 	public int insideTemperature = 20;
 
 	#region Singleton
