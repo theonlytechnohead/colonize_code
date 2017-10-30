@@ -32,27 +32,37 @@ public class tempPanelController : MonoBehaviour {
 	void Update () {
 		outTemp = gameController.instance.outsideTemperature;
 		inTemp = gameController.instance.insideTemperature;
-		if (outTemp > 0f) {
+		if (outTemp > 0) {
 			outsideTempPositive.color = activeColour;
 			outsideTempNegative.color = inactiveColour;
 		}
-		if (outTemp < 0f) {
+		if (outTemp == 0) {
+			outsideTempPositive.color = inactiveColour;
+			outsideTempNegative.color = inactiveColour;
+		}
+		if (outTemp < 0) {
 			outsideTempPositive.color = inactiveColour;
 			outsideTempNegative.color = activeColour;
 		}
-		if (inTemp > 0f) {
+		if (inTemp > 0) {
 			insideTempPositive.color = activeColour;
 			insideTempNegative.color = inactiveColour;
 		}
-		if (inTemp < 0f) {
+		if (inTemp == 0) {
+			insideTempPositive.color = inactiveColour;
+			insideTempNegative.color = inactiveColour;
+		}
+		if (inTemp < 0) {
 			insideTempPositive.color = inactiveColour;
 			insideTempNegative.color = activeColour;
 		}
+		float outTempF = outTemp;
+		float inTempF = inTemp;
 		if (stupidTempSystem) {
-			outTemp = gameController.instance.outsideTemperature * 1.8f + 32f;
-			inTemp = gameController.instance.insideTemperature * 1.8f + 32f;
+			outTempF = gameController.instance.outsideTemperature * 1.8f + 32f;
+			inTempF = gameController.instance.insideTemperature * 1.8f + 32f;
 		}
-		outsideTemp.text = Mathf.Abs(gameController.instance.outsideTemperature).ToString();
-		insideTemp.text = Mathf.Abs(gameController.instance.insideTemperature).ToString();
+		outsideTemp.text = Mathf.Abs(outTempF).ToString();
+		insideTemp.text = Mathf.Abs(inTempF).ToString();
 	}
 }
