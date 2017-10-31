@@ -562,7 +562,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 25
+  m_Text: 20
 --- !u!222 &360781092
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2471,7 +2471,7 @@ MonoBehaviour:
   - B1
   - B2
   warpSpeed: 1
-  outsideTemperature: -55
+  outsideTemperature: -20
   insideTemperature: 20
 --- !u!4 &1860609892
 Transform:
