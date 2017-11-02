@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class gameController : MonoBehaviour {
 
@@ -97,6 +98,7 @@ public class gameController : MonoBehaviour {
 	}
 
 	public void ResetColours () {
+		EventSystem.current.SetSelectedGameObject(null);
 		GameObject.Find("TripleSpeedButton").GetComponent<Image>().color = normalColour;
 		GameObject.Find("DoubleSpeedButton").GetComponent<Image>().color = normalColour;
 		GameObject.Find("NormalSpeedButton").GetComponent<Image>().color = normalColour;
