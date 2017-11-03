@@ -15,11 +15,20 @@ public class gameController : MonoBehaviour {
 	public List<string> levelNames;
 
 	public int warpSpeed = 1;
+	public List<Month> months;
+	public Text monthText;
+	private Month currentMonth;
+	private int month = 4;
 
-	[Range(-130, 20)]
-	public int outsideTemperature = -55;
-	[Range(-30, 30)]
-	public int insideTemperature = 20;
+	public int time = 0;
+	private float addTime;
+
+	public Light sun;
+
+	[HideInInspector]
+	public int outsideTemperature;
+	[HideInInspector]
+	public int insideTemperature;
 
 	#region Singleton
 	public static gameController instance;
@@ -36,6 +45,9 @@ public class gameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		NormalTime();
+		currentMonth = months[month];
+		monthText.text = currentMonth.name;
+		UpdateTemperature();
 	}
 	
 	// Update is called once per frame
@@ -71,16 +83,42 @@ public class gameController : MonoBehaviour {
 			cameraController.mainCamera.cullingMask = levelMask[currentLevel];
 			levelText.GetComponent<Text>().text = levelNames[currentLevel];
 		}
+
+		addTime += Time.deltaTime * warpSpeed;
+		if (addTime >= 1f) {
+			if (time < 999) {
+				time++;
+				if (time % 5 == 0) {
+					UpdateTemperature();
+				}
+				addTime = 0f;
+			} else {
+				time = 0;
+				if (month < 11) {
+					month++;
+				} else {
+					month = 0;
+				}
+			}
+		}
+		currentMonth = months[month];
+		monthText.text = currentMonth.name;
+		sun.intensity = time / 1000f;
+		//sun.intensity = 0.01f;
+	}
+
+	void UpdateTemperature () {
+		outsideTemperature = Mathf.RoundToInt(Mathf.Lerp(currentMonth.minTemp, currentMonth.maxTemp, time / 1000) + Random.Range(-3f, 3f));
 	}
 
 	public void TripleTime () {
-		warpSpeed = 4;
+		warpSpeed = 100;
 		ResetColours();
 		GameObject.Find("TripleSpeedButton").GetComponent<Image>().color = timeActivatedColour;
 	}
 
 	public void DoubleTime () {
-		warpSpeed = 2;
+		warpSpeed = 10;
 		ResetColours();
 		GameObject.Find("DoubleSpeedButton").GetComponent<Image>().color = timeActivatedColour;
 	}

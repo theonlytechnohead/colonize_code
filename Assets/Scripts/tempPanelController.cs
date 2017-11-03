@@ -26,31 +26,32 @@ public class tempPanelController : MonoBehaviour {
 	void Update () {
 		outTemp = gameController.instance.outsideTemperature;
 		inTemp = gameController.instance.insideTemperature;
-		if (outTemp > 0) {
+		float outTempFinal = outTemp;
+		float inTempFinal = inTemp;
+		if (stupidTempSystem) {
+			outTempFinal = gameController.instance.outsideTemperature * 1.8f + 32f;
+			inTempFinal = gameController.instance.insideTemperature * 1.8f + 32f;
+		}
+		if (outTempFinal > 0) {
 			outsideIndicator.text = "+";
 		}
-		if (outTemp == 0) {
+		if (outTempFinal == 0) {
 			outsideIndicator.text = "";
 		}
-		if (outTemp < 0) {
+		if (outTempFinal < 0) {
 			outsideIndicator.text = "-";
 		}
-		if (inTemp > 0) {
+		if (inTempFinal > 0) {
 			insideIndicator.text = "+";
 		}
-		if (inTemp == 0) {
+		if (inTempFinal == 0) {
 			insideIndicator.text = "";
 		}
-		if (inTemp < 0) {
+		if (inTempFinal < 0) {
 			insideIndicator.text = "-";
 		}
-		float outTempF = outTemp;
-		float inTempF = inTemp;
-		if (stupidTempSystem) {
-			outTempF = gameController.instance.outsideTemperature * 1.8f + 32f;
-			inTempF = gameController.instance.insideTemperature * 1.8f + 32f;
-		}
-		outsideTemp.text = Mathf.RoundToInt(Mathf.Abs(outTempF)).ToString();
-		insideTemp.text = Mathf.RoundToInt(Mathf.Abs(inTempF)).ToString();
+
+		outsideTemp.text = Mathf.RoundToInt(Mathf.Abs(outTempFinal)).ToString();
+		insideTemp.text = Mathf.RoundToInt(Mathf.Abs(inTempFinal)).ToString();
 	}
 }
