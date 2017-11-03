@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class tempPanelController : MonoBehaviour {
 
@@ -11,11 +12,38 @@ public class tempPanelController : MonoBehaviour {
 	public Text insideIndicator;
 	public Text celciusIndicator;
 	public Text fahrenheitIndicator;
+	public Text heatIndicator;
+
+
+	public GameObject temperatureInfoPanel;
+	public Vector2 normalPosition;
+	public Vector2 hiddenPosition;
+	[HideInInspector]
+	public bool venting;
+	[HideInInspector]
+	public bool heating;
+
+	public Color activeColour;
+	public Color normalColour;
 
 	public bool stupidTempSystem = false;
 
 	private float outTemp;
 	private float inTemp;
+
+	private bool mouseOver;
+
+	#region Singleton
+	public static tempPanelController instance;
+
+	private void Awake () {
+		if (instance != null) {
+			Debug.LogWarning("More than one instance of tempPanelController found!");
+			return;
+		}
+		instance = this;
+	}
+	#endregion
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +79,48 @@ public class tempPanelController : MonoBehaviour {
 			insideIndicator.text = "-";
 		}
 
+		if (venting) {
+			heatIndicator.text = "<";
+		} else if (heating) {
+			heatIndicator.text = ">";
+		} else {
+			heatIndicator.text = "|";
+		}
+
 		outsideTemp.text = Mathf.RoundToInt(Mathf.Abs(outTempFinal)).ToString();
 		insideTemp.text = Mathf.RoundToInt(Mathf.Abs(inTempFinal)).ToString();
+
+		if (mouseOver) {
+			temperatureInfoPanel.transform.position = Vector3.Lerp(temperatureInfoPanel.transform.position, normalPosition, 10f * Time.deltaTime);
+		} else {
+			temperatureInfoPanel.transform.position = Vector3.Lerp(temperatureInfoPanel.transform.position, hiddenPosition, 10f * Time.deltaTime);
+		}
+	}
+	public void SetMouseOverState (bool state) {
+		mouseOver = state;
+	}
+	public void Vent () {
+		ResetColours();
+		GameObject.Find("ventButton").GetComponent<Image>().color = activeColour;
+		venting = true;
+		heating = false;
+	}
+	public void Heat () {
+		ResetColours();
+		GameObject.Find("heatButton").GetComponent<Image>().color = activeColour;
+		heating = true;
+		venting = false;
+	}
+	public void Stop () {
+		ResetColours();
+		GameObject.Find("stopButton").GetComponent<Image>().color = activeColour;
+		venting = false;
+		heating = false;
+	}
+	public void ResetColours () {
+		EventSystem.current.SetSelectedGameObject(null);
+		GameObject.Find("ventButton").GetComponent<Image>().color = normalColour;
+		GameObject.Find("heatButton").GetComponent<Image>().color = normalColour;
+		GameObject.Find("stopButton").GetComponent<Image>().color = normalColour;
 	}
 }

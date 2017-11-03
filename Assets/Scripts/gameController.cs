@@ -35,7 +35,7 @@ public class gameController : MonoBehaviour {
 
 	private void Awake () {
 		if (instance != null) {
-			Debug.LogWarning("More than one instance of Inventory found!");
+			Debug.LogWarning("More than one instance of gameController found!");
 			return;
 		}
 		instance = this;
@@ -108,7 +108,16 @@ public class gameController : MonoBehaviour {
 	}
 
 	void UpdateTemperature () {
-		outsideTemperature = Mathf.RoundToInt(Mathf.Lerp(currentMonth.minTemp, currentMonth.maxTemp, time / 1000) + Random.Range(-3f, 3f));
+		float newOutTemp = Mathf.Lerp(currentMonth.minTemp, currentMonth.maxTemp, time / 1000) + Random.Range(-3f, 3f);
+		float newInTemp = insideTemperature;
+		newInTemp = Mathf.Lerp(newInTemp, newOutTemp, Time.deltaTime);
+		if (tempPanelController.instance.venting) {
+			newInTemp -= Random.Range(1f, 3f);
+		} else if (tempPanelController.instance.heating) {
+			newInTemp += Random.Range(1f, 3f);
+		}
+		outsideTemperature = Mathf.RoundToInt(newOutTemp);
+		insideTemperature = Mathf.RoundToInt(newInTemp);
 	}
 
 	public void TripleTime () {
