@@ -16,8 +16,8 @@ public class tempPanelController : MonoBehaviour {
 
 
 	public GameObject temperatureInfoPanel;
-	public Vector2 normalPosition;
-	public Vector2 hiddenPosition;
+	public GameObject normalPosition;
+	public GameObject hiddenPosition;
 	[HideInInspector]
 	public bool venting;
 	[HideInInspector]
@@ -91,9 +91,9 @@ public class tempPanelController : MonoBehaviour {
 		insideTemp.text = Mathf.RoundToInt(Mathf.Abs(inTempFinal)).ToString();
 
 		if (mouseOver) {
-			temperatureInfoPanel.transform.position = Vector3.Lerp(temperatureInfoPanel.transform.position, normalPosition, 10f * Time.deltaTime);
+			temperatureInfoPanel.transform.position = Vector3.Lerp(temperatureInfoPanel.transform.position, normalPosition.transform.position, 10f * Time.deltaTime);
 		} else {
-			temperatureInfoPanel.transform.position = Vector3.Lerp(temperatureInfoPanel.transform.position, hiddenPosition, 10f * Time.deltaTime);
+			temperatureInfoPanel.transform.position = Vector3.Lerp(temperatureInfoPanel.transform.position, hiddenPosition.transform.position, 10f * Time.deltaTime);
 		}
 	}
 	public void SetMouseOverState (bool state) {

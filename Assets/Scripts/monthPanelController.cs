@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class monthPanelController : MonoBehaviour {
 
-	public Vector2 normalPosition;
-	public Vector2 hiddenPosition;
+	public GameObject normalPosition;
+	public GameObject hiddenPosition;
 	public GameObject monthInfoPanel;
 	public Text timeText;
 
@@ -20,9 +20,9 @@ public class monthPanelController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (mouseOver) {
-			monthInfoPanel.transform.position = Vector3.Lerp(monthInfoPanel.transform.position, normalPosition, 10f * Time.deltaTime);
+			monthInfoPanel.transform.position = Vector3.Lerp(monthInfoPanel.transform.position, normalPosition.transform.position, 10f * Time.deltaTime);
 		} else {
-			monthInfoPanel.transform.position = Vector3.Lerp(monthInfoPanel.transform.position, hiddenPosition, 10f * Time.deltaTime);
+			monthInfoPanel.transform.position = Vector3.Lerp(monthInfoPanel.transform.position, hiddenPosition.transform.position, 10f * Time.deltaTime);
 		}
 		timeText.text = "Time: " + gameController.instance.time;
 	}

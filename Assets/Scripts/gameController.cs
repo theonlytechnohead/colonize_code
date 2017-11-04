@@ -21,6 +21,7 @@ public class gameController : MonoBehaviour {
 	private int month = 4;
 
 	public int time = 0;
+	public float dayProgress = 0f;
 	private float addTime;
 
 	public Light sun;
@@ -101,20 +102,26 @@ public class gameController : MonoBehaviour {
 				}
 			}
 		}
+		if (time <= 500) {
+			dayProgress = (time / 1000f) * 2f;
+		} else {
+			dayProgress = Mathf.Abs((time - 1000) / 1000f) * 2f;
+		}
+
 		currentMonth = months[month];
 		monthText.text = currentMonth.name;
-		sun.intensity = time / 1000f;
+		sun.intensity = dayProgress;
 		//sun.intensity = 0.01f;
 	}
 
 	void UpdateTemperature () {
-		float newOutTemp = Mathf.Lerp(currentMonth.minTemp, currentMonth.maxTemp, time / 1000) + Random.Range(-3f, 3f);
+		float newOutTemp = Mathf.Lerp(currentMonth.minTemp, currentMonth.maxTemp, dayProgress) + Random.Range(-3f, 3f);
 		float newInTemp = insideTemperature;
 		newInTemp = Mathf.Lerp(newInTemp, newOutTemp, Time.deltaTime);
 		if (tempPanelController.instance.venting) {
-			newInTemp -= Random.Range(1f, 3f);
+			newInTemp -= Random.Range(2f, 4f);
 		} else if (tempPanelController.instance.heating) {
-			newInTemp += Random.Range(1f, 3f);
+			newInTemp += Random.Range(1.5f, 4f);
 		}
 		outsideTemperature = Mathf.RoundToInt(newOutTemp);
 		insideTemperature = Mathf.RoundToInt(newInTemp);
