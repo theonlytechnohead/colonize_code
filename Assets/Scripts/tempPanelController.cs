@@ -47,7 +47,7 @@ public class tempPanelController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Stop();
 	}
 	
 	// Update is called once per frame

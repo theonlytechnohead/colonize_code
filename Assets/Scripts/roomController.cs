@@ -23,9 +23,9 @@ public class roomController : MonoBehaviour {
 
 	}
 
-	public void buildRoom (Room roomToBuild) {
+	public void buildRoom (GameObject roomToBuild) {
 			if (room != null & currentRoom == null) {
-				currentRoom = Instantiate(roomToBuild.prefab, new Vector3(transform.position.x, transform.position.y + 2.25f, transform.position.z), transform.rotation);
+				currentRoom = Instantiate(roomToBuild, new Vector3(transform.position.x, transform.position.y + 2.25f, transform.position.z), transform.rotation);
 				//currentRoom.transform.SetParent(transform);
 				//currentRoom.transform.position += new Vector3(0f, 2f, 0f);
 				currentRoom.layer = gameObject.layer;
@@ -37,7 +37,7 @@ public class roomController : MonoBehaviour {
 
 	void OnMouseDown () {
 		if (currentRoom == null) {
-			buildRoom(room);
+			buildRoom(room.prefab);
 			renderer.material.color = builtColour;
 		}
 	}

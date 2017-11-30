@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b0e46b66975e947b952b1ed0dc88f8, type: 3}
+  m_Name: Foundation
+  m_EditorClassIdentifier: 
+  build: 1
+  thingToBuild: {fileID: 1787324698552790, guid: 2fe0eb6e85b1842f1b844f2934dc45d1,
+    type: 2}
+  roomToBuild: {fileID: 0}
