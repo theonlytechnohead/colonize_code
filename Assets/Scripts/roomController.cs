@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class roomController : MonoBehaviour {
 
@@ -36,14 +37,26 @@ public class roomController : MonoBehaviour {
 	}
 
 	void OnMouseDown () {
-		if (currentRoom == null) {
-			buildRoom(room.prefab);
-			renderer.material.color = builtColour;
+		if(EventSystem.current.IsPointerOverGameObject()) {
+			// we're over a UI element... peace out
+			return;
+    	}
+		if (buildPanelController.instance.selectedTool != null) {
+			if (buildPanelController.instance.selectedTool.name == "Room") {
+				if (currentRoom == null) {
+					buildRoom(room.prefab);
+					renderer.material.color = builtColour;
+				}
+			}
 		}
 	}
 	void OnMouseEnter () {
-		if (currentRoom == null) {
-			renderer.material.color = highlightColour;
+		if (buildPanelController.instance.selectedTool != null) {
+			if (buildPanelController.instance.selectedTool.name == "Room") {
+				if (currentRoom == null) {
+					renderer.material.color = highlightColour;
+				}
+			}
 		}
 	}
     void OnMouseExit () {

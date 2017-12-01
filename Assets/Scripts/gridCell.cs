@@ -52,8 +52,12 @@ public class gridCell : MonoBehaviour {
 		}
 	}
 	void OnMouseEnter () {
-		if (newRoom == null) {
-			renderer.material.color = highlightColour;
+		if (buildPanelController.instance.selectedTool != null) {
+			if (buildPanelController.instance.selectedTool.name == "Foundation") {
+				if (newRoom == null) {
+					renderer.material.color = highlightColour;
+				}
+			}
 		}
 	}
     void OnMouseExit () {

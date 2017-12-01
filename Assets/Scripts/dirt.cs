@@ -27,7 +27,11 @@ public class dirt : MonoBehaviour {
 		}		
 	}
 	void OnMouseEnter () {
-		renderer.material.color = highlightColour;
+		if (buildPanelController.instance.selectedTool != null) {
+			if (buildPanelController.instance.selectedTool.name == "Dig") {
+				renderer.material.color = highlightColour;
+			}
+		}
 	}
     void OnMouseExit () {
 		renderer.material.color = normalColour;
