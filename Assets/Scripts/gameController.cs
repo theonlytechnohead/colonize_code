@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class gameController : MonoBehaviour {
 
@@ -16,7 +17,7 @@ public class gameController : MonoBehaviour {
 
 	public int warpSpeed = 1;
 	public List<Month> months;
-	public Text monthText;
+	public GameObject monthText;
 	private Month currentMonth;
 	private int month = 4;
 
@@ -47,12 +48,15 @@ public class gameController : MonoBehaviour {
 	void Start () {
 		NormalTime();
 		currentMonth = months[month];
-		monthText.text = currentMonth.name;
+		monthText.GetComponent<TextMeshProUGUI>().text = currentMonth.name;
 		UpdateTemperature();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Application.Quit();
+		}
 		if (Input.GetKeyDown("1")) {
 			NormalTime();
 		}
@@ -75,14 +79,14 @@ public class gameController : MonoBehaviour {
 				currentLevel--;
 			}
 			cameraController.mainCamera.cullingMask = levelMask[currentLevel];
-			levelText.GetComponent<Text>().text = levelNames[currentLevel];
+			levelText.GetComponent<TextMeshProUGUI>().text = levelNames[currentLevel];
 		}
 		if (Input.GetKeyDown(KeyCode.PageDown)) {
 			if (currentLevel < levelMask.Count - 1) {
 				currentLevel++;
 			}
 			cameraController.mainCamera.cullingMask = levelMask[currentLevel];
-			levelText.GetComponent<Text>().text = levelNames[currentLevel];
+			levelText.GetComponent<TextMeshProUGUI>().text = levelNames[currentLevel];
 		}
 
 		addTime += Time.deltaTime * warpSpeed;
@@ -109,7 +113,7 @@ public class gameController : MonoBehaviour {
 		}
 
 		currentMonth = months[month];
-		monthText.text = currentMonth.name;
+		monthText.GetComponent<TextMeshProUGUI>().text = currentMonth.name;
 		sun.intensity = dayProgress;
 		//sun.intensity = 0.01f;
 	}

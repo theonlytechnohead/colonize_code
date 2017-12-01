@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class dirt : MonoBehaviour {
 
@@ -15,7 +16,15 @@ public class dirt : MonoBehaviour {
 	}
 
 	void OnMouseDown () {
-		Destroy(gameObject);
+		if(EventSystem.current.IsPointerOverGameObject()) {
+			// we're over a UI element... peace out
+			return;
+    	}
+		if (buildPanelController.instance.selectedTool != null) {
+			if (buildPanelController.instance.selectedTool.name == "Dig") {
+				Destroy(gameObject);
+			}
+		}		
 	}
 	void OnMouseEnter () {
 		renderer.material.color = highlightColour;

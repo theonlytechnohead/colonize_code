@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class monthPanelController : MonoBehaviour {
 
 	public GameObject normalPosition;
 	public GameObject hiddenPosition;
 	public GameObject monthInfoPanel;
-	public Text timeText;
+	public GameObject timeText;
 
 	private bool mouseOver = false;
 
@@ -24,7 +25,7 @@ public class monthPanelController : MonoBehaviour {
 		} else {
 			monthInfoPanel.transform.position = Vector3.Lerp(monthInfoPanel.transform.position, hiddenPosition.transform.position, 10f * Time.deltaTime);
 		}
-		timeText.text = "Time: " + gameController.instance.time;
+		timeText.GetComponent<TextMeshProUGUI>().text = "Time: " + gameController.instance.time;
 	}
 
 	public void SetMouseOverState (bool state) {

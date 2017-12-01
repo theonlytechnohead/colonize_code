@@ -9,9 +9,22 @@ public class buildPanelController : MonoBehaviour {
 	public bool visible = false;
 	public Transform hiddenPosition;
 	public Transform normalPosition;
-	public Tool selectedTool;
+	public Tool selectedTool = null;
 
 	public List<Tool> tools;
+
+
+	#region Singleton
+	public static buildPanelController instance;
+
+	private void Awake () {
+		if (instance != null) {
+			Debug.LogWarning("More than one instance of buildPanelController found!");
+			return;
+		}
+		instance = this;
+	}
+	#endregion
 
 	// Use this for initialization
 	void Start () {
