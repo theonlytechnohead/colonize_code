@@ -11,6 +11,8 @@ public class buildPanelController : MonoBehaviour {
 	public Transform normalPosition;
 	public Tool selectedTool = null;
 
+	public GameObject selectImage;
+
 	public List<Tool> tools;
 
 
@@ -40,6 +42,8 @@ public class buildPanelController : MonoBehaviour {
 			transform.position = Vector3.Lerp(transform.position, normalPosition.position, 10f * Time.deltaTime);
 			GameObject.Find("buildPanelButtonText").GetComponent<Text>().text = "X";
 		} else {
+			SelectButton(null);
+			SelectTool(null);
 			transform.position = Vector3.Lerp(transform.position, hiddenPosition.position, 10f * Time.deltaTime);
 			GameObject.Find("buildPanelButtonText").GetComponent<Text>().text = "▲";
 		}
@@ -47,6 +51,17 @@ public class buildPanelController : MonoBehaviour {
 
 	public void SelectTool (Tool toolToSelect) {
 		selectedTool = toolToSelect;
+		ResetColour();
+	}
+
+	public void SelectButton (GameObject selectedButton) {
+		if (selectedButton == null) {
+			selectImage.SetActive(false);
+		} else {
+			selectImage.transform.position = selectedButton.transform.position;
+			selectImage.GetComponent<Image>().rectTransform.sizeDelta = selectedButton.GetComponent<Image>().rectTransform.sizeDelta;
+			selectImage.SetActive(true);
+		}
 	}
 
 	public void toggleVisibility () {
