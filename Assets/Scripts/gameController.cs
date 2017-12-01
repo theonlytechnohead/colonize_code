@@ -55,7 +55,16 @@ public class gameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
-			Application.Quit();
+			if (buildPanelController.instance.visible) {
+				if (buildPanelController.instance.selectedTool != null) {
+					buildPanelController.instance.SelectButton(null);
+					buildPanelController.instance.SelectTool(null);
+				} else {
+					buildPanelController.instance.toggleVisibility();
+				}
+			} else {
+				Application.Quit();
+			}
 		}
 		if (Input.GetKeyDown("1")) {
 			NormalTime();
