@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class tempPanelController : MonoBehaviour {
 
-	public Text outsideTemp;
-	public Text outsideIndicator;
-	public Text insideTemp;
-	public Text insideIndicator;
-	public Text celciusIndicator;
-	public Text fahrenheitIndicator;
-	public Text heatIndicator;
+	public TextMeshProUGUI outsideTemp;
+	public TextMeshProUGUI outsideIndicator;
+	public TextMeshProUGUI insideTemp;
+	public TextMeshProUGUI insideIndicator;
+	public TextMeshProUGUI celciusIndicator;
+	public TextMeshProUGUI fahrenheitIndicator;
+	public TextMeshProUGUI pumpIndicator;
 
 
 	public GameObject temperatureInfoPanel;
@@ -80,11 +81,11 @@ public class tempPanelController : MonoBehaviour {
 		}
 
 		if (venting) {
-			heatIndicator.text = "<";
+			pumpIndicator.text = "<";
 		} else if (heating) {
-			heatIndicator.text = ">";
+			pumpIndicator.text = ">";
 		} else {
-			heatIndicator.text = "|";
+			pumpIndicator.text = "|";
 		}
 
 		outsideTemp.text = Mathf.RoundToInt(Mathf.Abs(outTempFinal)).ToString();
