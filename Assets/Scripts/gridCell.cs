@@ -32,11 +32,6 @@ public class gridCell : MonoBehaviour {
 		//newRoom.transform.position += new Vector3(0f, 0.5f, 0f);
 	}
 
-	void OnMouseOver () {
-		if (Input.GetKeyDown(KeyCode.Delete)) {
-			Destroy(gameObject);
-		}
-	}
 	void OnMouseDown () {
 		if(EventSystem.current.IsPointerOverGameObject()) {
 			// we're over a UI element... peace out
@@ -51,14 +46,21 @@ public class gridCell : MonoBehaviour {
 			}	
 		}
 	}
-	void OnMouseEnter () {
+	void OnMouseOver () {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Foundation") {
 				if (newRoom == null) {
 					renderer.material.color = highlightColour;
 				}
+			} else {
+				renderer.material.color = normalColour;
 			}
+		} else {
+			renderer.material.color = normalColour;
 		}
+		if (EventSystem.current.IsPointerOverGameObject()) {
+			renderer.material.color = normalColour;
+    	}
 	}
     void OnMouseExit () {
 		if (newRoom == null) {

@@ -26,12 +26,19 @@ public class dirt : MonoBehaviour {
 			}
 		}		
 	}
-	void OnMouseEnter () {
+	void OnMouseOver () {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Dig") {
 				renderer.material.color = highlightColour;
+			} else {
+				renderer.material.color = normalColour;
 			}
+		} else {
+			renderer.material.color = normalColour;
 		}
+		if (EventSystem.current.IsPointerOverGameObject()) {
+			renderer.material.color = normalColour;
+    	}
 	}
     void OnMouseExit () {
 		renderer.material.color = normalColour;
