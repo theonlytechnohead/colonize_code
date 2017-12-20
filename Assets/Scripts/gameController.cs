@@ -50,6 +50,7 @@ public class gameController : MonoBehaviour {
 		currentMonth = months[month];
 		monthText.GetComponent<TextMeshProUGUI>().text = currentMonth.name;
 		UpdateTemperature();
+		time = 500;
 	}
 	
 	// Update is called once per frame

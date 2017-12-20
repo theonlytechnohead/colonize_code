@@ -22,7 +22,11 @@ public class gridCell : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (buildPanelController.instance.visible) {
+			GetComponent<MeshRenderer>().enabled = true;
+		} else {
+			GetComponent<MeshRenderer>().enabled = false;
+		}
 	}
 
 	public void buildRoom (GameObject roomHolder) {
