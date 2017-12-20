@@ -10,6 +10,7 @@ public class dirt : MonoBehaviour {
 	public Color dugColour;
 	private bool digging = false;
 	private Renderer renderer;
+	public GameObject dirtExplodeEffect;
 
 	// Use this for initialization
 	void Start () {
@@ -64,6 +65,7 @@ public class dirt : MonoBehaviour {
 
 	IEnumerator destroyAfterSeconds (int seconds) {
 		yield return new WaitForSeconds(seconds);
+		Instantiate(dirtExplodeEffect, transform.position, transform.rotation);
 		Destroy(gameObject);
 	}
 }

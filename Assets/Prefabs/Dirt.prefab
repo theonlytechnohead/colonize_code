@@ -110,3 +110,5 @@ MonoBehaviour:
   normalColour: {r: 0.5058824, g: 0.30980393, b: 0.30980393, a: 1}
   highlightColour: {r: 0.627451, g: 0.54901963, b: 0.54901963, a: 1}
   dugColour: {r: 0, g: 0, b: 0, a: 1}
+  dirtExplodeEffect: {fileID: 1580774895973672, guid: 4f4a30e352dca4a53bb1556c64441704,
+    type: 2}
