@@ -19,7 +19,9 @@ public class dirt : MonoBehaviour {
 
 	void Update () {
 		if (digging) {
-			renderer.material.color = Color.Lerp(renderer.material.color, dugColour, 0.1f * Time.deltaTime);
+			renderer.material.color = Color.Lerp(renderer.material.color, dugColour, 0.2f * Time.deltaTime);
+			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(10, 0, 5), 0.2f * Time.deltaTime);
+			transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(transform.localPosition.x, -5, transform.localPosition.z), 0.2f * Time.deltaTime);
 		}
 	}
 
@@ -32,7 +34,7 @@ public class dirt : MonoBehaviour {
 			if (buildPanelController.instance.selectedTool.name == "Dig") {
 				digging = true;
 				renderer.material.color = normalColour;
-				StartCoroutine(destroyAfterSeconds(8));
+				StartCoroutine(destroyAfterSeconds(13));
 			}
 		}		
 	}
