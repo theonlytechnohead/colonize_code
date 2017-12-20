@@ -7,12 +7,20 @@ public class dirt : MonoBehaviour {
 
 	public Color normalColour;
 	public Color highlightColour;
+	public Color dugColour;
+	private bool digging = false;
 	private Renderer renderer;
 
 	// Use this for initialization
 	void Start () {
 		renderer = GetComponent<Renderer>();
 		transform.position += new Vector3(0f, 1.5f, 0f);
+	}
+
+	void Update () {
+		if (digging) {
+			renderer.material.color = Color.Lerp(renderer.material.color, dugColour, 0.1f * Time.deltaTime);
+		}
 	}
 
 	void OnMouseDown () {
@@ -22,11 +30,16 @@ public class dirt : MonoBehaviour {
     	}
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Dig") {
-				Destroy(gameObject);
+				digging = true;
+				renderer.material.color = normalColour;
+				StartCoroutine(destroyAfterSeconds(8));
 			}
 		}		
 	}
 	void OnMouseOver () {
+		if (digging) {
+			return;
+		}
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Dig") {
 				renderer.material.color = highlightColour;
@@ -41,6 +54,14 @@ public class dirt : MonoBehaviour {
     	}
 	}
     void OnMouseExit () {
+		if (digging) {
+			return;
+		}
 		renderer.material.color = normalColour;
     }
+
+	IEnumerator destroyAfterSeconds (int seconds) {
+		yield return new WaitForSeconds(seconds);
+		Destroy(gameObject);
+	}
 }

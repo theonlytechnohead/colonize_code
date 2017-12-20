@@ -10,11 +10,13 @@ public class gameController : MonoBehaviour {
 	public Color timeActivatedColour;
 	public Color normalColour;
 
+	// Level
 	public List<LayerMask> levelMask;
 	public int currentLevel = 0;
 	public GameObject levelText;
 	public List<string> levelNames;
 
+	// Time
 	public int warpSpeed = 1;
 	public List<Month> months;
 	public GameObject monthText;
@@ -26,6 +28,15 @@ public class gameController : MonoBehaviour {
 	private float addTime;
 
 	public Light sun;
+
+	// Resources
+	public float oxygen = 0f;
+	public float water = 0f;
+	public float food = 0f;
+	public float power = 0f;
+	public float kironide = 0f;
+	public float rhypherium = 0f;
+
 
 	[HideInInspector]
 	public int outsideTemperature;

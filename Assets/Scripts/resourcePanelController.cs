@@ -29,17 +29,11 @@ public class resourcePanelController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Tab)) {
-			toggleVisibility();
-		}
+		visible = buildPanelController.instance.visible;
 		if (visible) {
 			transform.position = Vector3.Lerp(transform.position, normalPosition.position, 10f * Time.deltaTime);
 		} else {
 			transform.position = Vector3.Lerp(transform.position, hiddenPosition.position, 10f * Time.deltaTime);
 		}
-	}
-
-	public void toggleVisibility () {
-		visible = !visible;
 	}
 }
