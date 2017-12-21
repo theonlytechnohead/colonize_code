@@ -44,8 +44,13 @@ public class gridCell : MonoBehaviour {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Foundation") {
 				if (newRoom == null) {
-					buildRoom(roomHolder);
-					renderer.material.color = builtColour;
+					if (gameController.instance.kironide > 10f) {
+						buildRoom(roomHolder);
+						renderer.material.color = builtColour;
+						gameController.instance.kironide -= 10f;
+					} else {
+						// Error feedback somehow stuff can't be bothered right now though
+					}
 				}
 			}	
 		}
