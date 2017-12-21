@@ -8,9 +8,11 @@ public class cameraController : MonoBehaviour {
 	public float scrollSpeed = 30f;
 
 	public Transform cameraMoveTarget;
+	public Vector3 lastPos;
 
 	#region Singleton
 	public static Camera mainCamera;
+	public static cameraController instance;
 
 	private void Awake () {
 		if (mainCamera != null) {
@@ -18,6 +20,11 @@ public class cameraController : MonoBehaviour {
 			return;
 		}
 		mainCamera = GameObject.Find("Camera").GetComponent<Camera>();
+		if (instance != null) {
+			Debug.LogWarning("More than one instance of cameraController found!");
+			return;
+		}
+		instance = this;
 	}
 	#endregion
 
@@ -30,6 +37,7 @@ public class cameraController : MonoBehaviour {
 	void Update () {
 		//// Camera movement and rotation controls
 		// Setup temp position variable
+		lastPos = transform.position;
 		Vector3 pos = cameraMoveTarget.transform.position;
 		Vector3 rot = cameraMoveTarget.transform.rotation.eulerAngles;
 		// Translate from world space to local space for proper movment according to current rotation
@@ -85,5 +93,9 @@ public class cameraController : MonoBehaviour {
 	void LateUpdate () {
 		Vector3 smoothedPos = Vector3.Lerp(transform.position, cameraMoveTarget.transform.position, 10f * Time.deltaTime);
 		transform.position = smoothedPos;
+	}
+
+	public void GoBackPos () {
+		cameraMoveTarget.position = lastPos;
 	}
 }
