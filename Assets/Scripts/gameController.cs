@@ -137,6 +137,14 @@ public class gameController : MonoBehaviour {
 		monthText.GetComponent<TextMeshProUGUI>().text = currentMonth.name;
 		sun.intensity = dayProgress;
 		//sun.intensity = 0.01f;
+
+		// Resource rounding
+		oxygen = Mathf.Round(oxygen * 100f) / 100f;
+		water = Mathf.Round(water * 100f) / 100f;
+		food = Mathf.Round(food * 100f) / 100f;
+		power = Mathf.Round(power * 100f) / 100f;
+		kironide = Mathf.Round(kironide * 100f) / 100f;
+		rhypherium = Mathf.Round(rhypherium * 100f) / 100f;
 	}
 
 	void UpdateTemperature () {
@@ -145,8 +153,10 @@ public class gameController : MonoBehaviour {
 		newInTemp = Mathf.Lerp(newInTemp, newOutTemp, Time.deltaTime);
 		if (tempPanelController.instance.venting) {
 			newInTemp -= Random.Range(2f, 4f);
+			power -= 0.1f;
 		} else if (tempPanelController.instance.heating) {
 			newInTemp += Random.Range(1.5f, 4f);
+			power -= 1;
 		}
 		outsideTemperature = Mathf.RoundToInt(newOutTemp);
 		insideTemperature = Mathf.RoundToInt(newInTemp);
