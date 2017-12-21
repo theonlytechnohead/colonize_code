@@ -74,9 +74,9 @@ public class cameraController : MonoBehaviour {
 
 		// Revert back into world space so that clamping workings properly, and can be directly applied
 		Vector3 newPos = cameraMoveTarget.transform.TransformPoint(pos);
-		newPos.x = Mathf.Clamp(newPos.x, -45, 45);
+		newPos.x = Mathf.Clamp(newPos.x, -55, 55);
 		newPos.y = Mathf.Clamp(newPos.y, 2, 50);
-		newPos.z = Mathf.Clamp(newPos.z, -27, 27);
+		newPos.z = Mathf.Clamp(newPos.z, -52, 52);
 		// Apply the transformation!
 		cameraMoveTarget.position = newPos;
 		transform.rotation = Quaternion.Slerp(transform.rotation, cameraMoveTarget.rotation, 10f * Time.deltaTime);

@@ -5689,8 +5689,8 @@ MonoBehaviour:
   gridObject: {fileID: 1308369412016182, guid: ede2f29467ba7427880bfc7f7570b028, type: 2}
   cellWidthX: 10
   cellHeightZ: 5
-  rows: 5
-  columns: 4
+  rows: 10
+  columns: 5
 --- !u!4 &968967598
 Transform:
   m_ObjectHideFlags: 0
@@ -5699,7 +5699,7 @@ Transform:
   m_GameObject: {fileID: 968967593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9, y: 1, z: 5.5}
+  m_LocalScale: {x: 11, y: 1, z: 10.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
