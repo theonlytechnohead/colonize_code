@@ -44,8 +44,11 @@ public class roomController : MonoBehaviour {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Room") {
 				if (currentRoom == null) {
-					buildRoom(room.prefab);
-					renderer.material.color = builtColour;
+					if (gameController.instance.rhypherium > room.cost) {
+						buildRoom(room.prefab);
+						renderer.material.color = builtColour;
+						gameController.instance.rhypherium -= room.cost;
+					}
 				}
 			}
 		}
