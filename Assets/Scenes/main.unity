@@ -11462,6 +11462,7 @@ MonoBehaviour:
   hiddenPosition: {fileID: 54354309}
   venting: 0
   heating: 0
+  panelDefaultColour: {r: 1, g: 1, b: 1, a: 0.47058824}
   activeColour: {r: 0, g: 1, b: 0, a: 1}
   normalColour: {r: 1, g: 1, b: 1, a: 1}
   errorColour: {r: 1, g: 0, b: 0, a: 1}

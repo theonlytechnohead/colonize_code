@@ -24,6 +24,7 @@ public class tempPanelController : MonoBehaviour {
 	[HideInInspector]
 	public bool heating;
 
+	public Color panelDefaultColour;
 	public Color activeColour;
 	public Color normalColour;
 	public Color errorColour;
@@ -124,7 +125,7 @@ public class tempPanelController : MonoBehaviour {
 		GetComponent<Image>().color = errorColour;
 	}
 	public void updateLights () {
-		GetComponent<Image>().color = normalColour;
+		GetComponent<Image>().color = panelDefaultColour;
 		if (venting) {
 			GameObject.Find("ventButton").GetComponent<Image>().color = activeColour;
 		} else if (heating) {
