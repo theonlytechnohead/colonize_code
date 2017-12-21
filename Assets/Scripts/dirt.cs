@@ -35,7 +35,7 @@ public class dirt : MonoBehaviour {
 			if (buildPanelController.instance.selectedTool.name == "Dig") {
 				digging = true;
 				renderer.material.color = normalColour;
-				StartCoroutine(destroyAfterSeconds(13));
+				StartCoroutine(destroyAfterSeconds(10));
 			}
 		}		
 	}
