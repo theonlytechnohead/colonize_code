@@ -152,11 +152,23 @@ public class gameController : MonoBehaviour {
 		float newInTemp = insideTemperature;
 		newInTemp = Mathf.Lerp(newInTemp, newOutTemp, Time.deltaTime);
 		if (tempPanelController.instance.venting) {
-			newInTemp -= Random.Range(2f, 4f);
-			power -= 0.1f;
+			if (power > 0.1f) {
+				newInTemp -= Random.Range(2f, 4f);
+				power -= 0.1f;
+				tempPanelController.instance.updateLights();
+			} else {
+				tempPanelController.instance.errorLight("vent");
+			}
 		} else if (tempPanelController.instance.heating) {
-			newInTemp += Random.Range(1.5f, 4f);
-			power -= 1;
+			if (power > 1f) {
+				newInTemp += Random.Range(1.5f, 4f);
+				power -= 1f;
+				tempPanelController.instance.updateLights();
+			} else {
+				tempPanelController.instance.errorLight("heat");
+			}
+		} else {
+			tempPanelController.instance.updateLights();
 		}
 		outsideTemperature = Mathf.RoundToInt(newOutTemp);
 		insideTemperature = Mathf.RoundToInt(newInTemp);

@@ -26,6 +26,7 @@ public class tempPanelController : MonoBehaviour {
 
 	public Color activeColour;
 	public Color normalColour;
+	public Color errorColour;
 
 	public bool stupidTempSystem = false;
 
@@ -117,6 +118,20 @@ public class tempPanelController : MonoBehaviour {
 		GameObject.Find("stopButton").GetComponent<Image>().color = activeColour;
 		venting = false;
 		heating = false;
+	}
+	public void errorLight (string button) {
+		GameObject.Find(button + "Button").GetComponent<Image>().color = errorColour;
+		GetComponent<Image>().color = errorColour;
+	}
+	public void updateLights () {
+		GetComponent<Image>().color = normalColour;
+		if (venting) {
+			GameObject.Find("ventButton").GetComponent<Image>().color = activeColour;
+		} else if (heating) {
+			GameObject.Find("ventButton").GetComponent<Image>().color = activeColour;
+		} else {
+			GameObject.Find("stopButton").GetComponent<Image>().color = activeColour;
+		}
 	}
 	public void ResetColours () {
 		EventSystem.current.SetSelectedGameObject(null);

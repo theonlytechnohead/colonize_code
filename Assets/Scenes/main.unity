@@ -11464,6 +11464,7 @@ MonoBehaviour:
   heating: 0
   activeColour: {r: 0, g: 1, b: 0, a: 1}
   normalColour: {r: 1, g: 1, b: 1, a: 1}
+  errorColour: {r: 1, g: 0, b: 0, a: 1}
   stupidTempSystem: 0
 --- !u!114 &2135365993
 MonoBehaviour:
