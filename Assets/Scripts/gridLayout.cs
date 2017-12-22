@@ -24,11 +24,15 @@ public class gridLayout : MonoBehaviour {
 	void buildGrid (string cullingLayerMask) {
 		for (int cellRow = -rows; cellRow <= rows; cellRow++) {
 			for (int cell = -columns; cell <= columns; cell++) {
-				Vector3 spawnPos = new Vector3(cellWidthX * cell, transform.position.y + 0.1f, cellHeightZ * cellRow);
-				GameObject clone = Instantiate(gridObject, spawnPos, transform.rotation);
-				clone.layer = LayerMask.NameToLayer(cullingLayerMask);
-				//clone.transform.SetParent(transform);
-				//clone.transform.position = new Vector3(spawnPos.x, -3.5f, spawnPos.z);
+				if ((-5f < cellRow && cellRow < 5f) && (-3f < cell && cell < 3f)) {
+					// It's the basement, don't build over it!
+				} else {
+					Vector3 spawnPos = new Vector3(cellWidthX * cell, transform.position.y + 0.1f, cellHeightZ * cellRow);
+					GameObject clone = Instantiate(gridObject, spawnPos, transform.rotation);
+					clone.layer = LayerMask.NameToLayer(cullingLayerMask);
+					//clone.transform.SetParent(transform);
+					//clone.transform.position = new Vector3(spawnPos.x, -3.5f, spawnPos.z);
+				}
 			}
 		}
 	}

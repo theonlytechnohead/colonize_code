@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 23194315273158584}
   - component: {fileID: 114732892705393258}
   - component: {fileID: 64809329534531094}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: l1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,4 +184,4 @@ MonoBehaviour:
   outerRoom: {fileID: 1610914986825340, guid: 23efa161de7eba14c8cfeae0de86425e, type: 2}
   innerRoom: {fileID: 1639783011918458, guid: c741272b51dac0e4bbdb5ec2701e29bd, type: 2}
   roomColour: {r: 0, g: 0.672, b: 1, a: 1}
-  layers: 0b0000000a00000009000000
+  layers: 0b0000000a000000090000000d0000000e000000
