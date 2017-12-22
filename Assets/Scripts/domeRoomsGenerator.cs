@@ -21,7 +21,7 @@ public class domeRoomsGenerator : MonoBehaviour {
 				newInnerRoom.layer = layers[floor - 1];
 				GameObject newOuterRoom = Instantiate(outerRoom, new Vector3(0f, 0f, 0f) + new Vector3(0f, 0.1f, 0f) + new Vector3(0f, 3f * floor, 0f), transform.rotation * Quaternion.Euler(new Vector3(0f, 180f, (360 / 24) * room)));
 				newOuterRoom.transform.localScale = transform.localScale + new Vector3(scale, scale, 0f);
-				newOuterRoom.AddComponent<domeRoomController>();
+				newOuterRoom.layer = layers[floor - 1];
 			}
 		}
 	}
