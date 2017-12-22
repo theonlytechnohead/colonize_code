@@ -24,5 +24,6 @@ public class domeRoomsGenerator : MonoBehaviour {
 				newOuterRoom.layer = layers[floor - 1];
 			}
 		}
+		Destroy(this);
 	}
 }

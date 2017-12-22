@@ -18,7 +18,7 @@ public class gridLayout : MonoBehaviour {
 		buildGrid("B2");
 		transform.position = new Vector3(0f, 0f, 0f);
 		transform.localScale = new Vector3(50f, 1f, 50f);
-		//Destroy(gameObject);
+		Destroy(this);
 	}
 
 	void buildGrid (string cullingLayerMask) {
