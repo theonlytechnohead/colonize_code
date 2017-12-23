@@ -7962,11 +7962,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1517688954}
     m_Modifications:
-    - target: {fileID: 114732892705393258, guid: c6a27482900a99c4b99886cf006e7c4a,
-        type: 2}
-      propertyPath: floorHeight.Array.size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4985335640072382, guid: c6a27482900a99c4b99886cf006e7c4a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7998,31 +7993,6 @@ Prefab:
     - target: {fileID: 4985335640072382, guid: c6a27482900a99c4b99886cf006e7c4a, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732892705393258, guid: c6a27482900a99c4b99886cf006e7c4a,
-        type: 2}
-      propertyPath: floorHeight.Array.data[0]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732892705393258, guid: c6a27482900a99c4b99886cf006e7c4a,
-        type: 2}
-      propertyPath: floorHeight.Array.data[1]
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732892705393258, guid: c6a27482900a99c4b99886cf006e7c4a,
-        type: 2}
-      propertyPath: floorHeight.Array.data[2]
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732892705393258, guid: c6a27482900a99c4b99886cf006e7c4a,
-        type: 2}
-      propertyPath: floorHeight.Array.data[3]
-      value: -4.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732892705393258, guid: c6a27482900a99c4b99886cf006e7c4a,
-        type: 2}
-      propertyPath: floorHeight.Array.data[4]
-      value: -9.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6a27482900a99c4b99886cf006e7c4a, type: 2}

@@ -181,7 +181,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306d48d699ae7e04285b783c0d296b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outerRoom: {fileID: 1610914986825340, guid: 23efa161de7eba14c8cfeae0de86425e, type: 2}
-  innerRoom: {fileID: 1639783011918458, guid: c741272b51dac0e4bbdb5ec2701e29bd, type: 2}
+  outerFoundation: {fileID: 1979809657206954, guid: 1f4f900883ca2f04eb45e66d3b6e8da0,
+    type: 2}
+  innerFoundation: {fileID: 1789655353087824, guid: c741272b51dac0e4bbdb5ec2701e29bd,
+    type: 2}
   roomColour: {r: 0, g: 0.672, b: 1, a: 1}
   layers: 0b0000000a000000090000000d0000000e000000
+  floorHeight:
+  - 3
+  - 6
+  - 9
+  - -4.75
+  - -9.75

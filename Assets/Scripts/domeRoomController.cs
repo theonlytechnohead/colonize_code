@@ -20,13 +20,9 @@ public class domeRoomController : MonoBehaviour {
 
 	public void buildRoom (GameObject roomToBuild) {
 			if (room != null & currentRoom == null) {
-				currentRoom = Instantiate(roomToBuild, new Vector3(transform.position.x, transform.position.y + 2.25f, transform.position.z), transform.rotation);
-				//currentRoom.transform.SetParent(transform);
-				//currentRoom.transform.position += new Vector3(0f, 2f, 0f);
+				currentRoom = Instantiate(roomToBuild, new Vector3(0f, transform.position.y, 0f), Quaternion.Euler(-90f, transform.rotation.eulerAngles.y + (360 / 32), 180f));
 				currentRoom.layer = gameObject.layer;
-				for (int child = 0; child < currentRoom.transform.childCount; child++) {
-					currentRoom.transform.GetChild(child).gameObject.layer = gameObject.layer;
-				}
+				currentRoom.transform.localScale = new Vector3(gameObject.transform.localScale.x, gameObject.transform.localScale.y, 29f);
 		}
 	}
 
@@ -38,7 +34,7 @@ public class domeRoomController : MonoBehaviour {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Room") {
 				if (currentRoom == null) {
-					if (gameController.instance.rhypherium > room.cost) {
+					if (gameController.instance.rhypherium >= room.cost) {
 						buildRoom(room.prefab);
 						renderer.material.color = builtColour;
 						gameController.instance.rhypherium -= room.cost;

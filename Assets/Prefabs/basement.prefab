@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4110098734628846}
   - component: {fileID: 33408751027451158}
   - component: {fileID: 23191643125447916}
+  - component: {fileID: 64914484567891668}
   m_Layer: 0
   m_Name: basement
   m_TagString: Untagged
@@ -81,4 +82,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784785309311192}
+  m_Mesh: {fileID: 4300000, guid: 54233c2b6fdc5eb41bd1fe653c5d7da0, type: 3}
+--- !u!64 &64914484567891668
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784785309311192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 54233c2b6fdc5eb41bd1fe653c5d7da0, type: 3}
