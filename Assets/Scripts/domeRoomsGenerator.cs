@@ -18,11 +18,11 @@ public class domeRoomsGenerator : MonoBehaviour {
 			if (floor == 3) {scale = -4f;} else
 			if (floor == 4) {scale = 2f;} else
 			if (floor == 5) {scale = 2f;}
-			for (int room = 1; room <= 24; room++) {
-				GameObject newInnerRoom = Instantiate(innerFoundation, new Vector3(0f, floorHeight[floor - 1], 0f) + new Vector3(0f, 0.1f, 0f), Quaternion.Euler(new Vector3(90f, (360 / 24) * room, 0f)));
+			for (int room = 0; room <= 32; room++) {
+				GameObject newInnerRoom = Instantiate(innerFoundation, new Vector3(0f, floorHeight[floor - 1], 0f) + new Vector3(0f, 0.1f, 0f), Quaternion.Euler(new Vector3(90f, (360 / 32) * room, 0f)));
 				newInnerRoom.transform.localScale = transform.localScale + new Vector3(scale, scale, 0f);
 				newInnerRoom.layer = layers[floor - 1];
-				GameObject newOuterRoom = Instantiate(outerFoundation, new Vector3(0f, floorHeight[floor - 1], 0f) + new Vector3(0f, 0.1f, 0f), Quaternion.Euler(new Vector3(90f, (360 / 24) * room, 0f)));
+				GameObject newOuterRoom = Instantiate(outerFoundation, new Vector3(0f, floorHeight[floor - 1], 0f) + new Vector3(0f, 0.1f, 0f), Quaternion.Euler(new Vector3(90f, (360 / 32) * room, 0f)));
 				newOuterRoom.transform.localScale = transform.localScale + new Vector3(scale, scale, 0f);
 				newOuterRoom.layer = layers[floor - 1];
 			}
