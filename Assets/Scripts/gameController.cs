@@ -62,6 +62,13 @@ public class gameController : MonoBehaviour {
 		monthText.GetComponent<TextMeshProUGUI>().text = currentMonth.name;
 		UpdateTemperature();
 		time = 500;
+
+		oxygen.amount = 100f;
+		water.amount = 10f;
+		food.amount = 10f;
+		power.amount = 0f;
+		kironide.amount = 0f;
+		rhypherium.amount = 0f;
 	}
 	
 	// Update is called once per frame
