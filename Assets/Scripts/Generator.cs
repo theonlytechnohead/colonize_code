@@ -21,7 +21,15 @@ public class Generator : ScriptableObject {
 
 	public void Generate () {
 		if (gameController.instance.power.amount >= powerRequired) {
-
+			if (resourceRequired != null) {
+				if (resourceRequired.amount >= resourceRequiredAmount) {
+					if (resourceGenerated.amount + resourceGeneratedAmount <= resourceGenerated.maxAmount) {
+						resourceGenerated.amount += resourceGeneratedAmount;
+						resourceRequired.amount -= resourceRequiredAmount;
+						gameController.instance.power.amount -= powerRequired;
+					}
+				}
+			}
 		}
 	}
 }

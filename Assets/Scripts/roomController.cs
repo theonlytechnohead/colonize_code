@@ -7,21 +7,29 @@ public class roomController : MonoBehaviour {
 
 	public GameObject currentRoom;
 	public Room room;
+	public List<Tool> compatibleTools;
 	private Renderer renderer;
 
 	public Color normalColour;
 	public Color highlightColour;
 	public Color builtColour;
+
+	float counter = 0f;
 	
 	// Use this for initialization
 	void Start () {
 		renderer = GetComponent<Renderer>();
 		transform.position += new Vector3(0f, 0.25f, 0f);
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		counter += Time.deltaTime;
+		if (counter >= 1f) {
+			roomGenerate();
+			counter = 0f;
+		}
 	}
 
 	public void buildRoom (GameObject roomToBuild) {
@@ -36,18 +44,26 @@ public class roomController : MonoBehaviour {
 		}
 	}
 
+	void roomGenerate () {
+		if (room.generator != null) {
+			room.generator.Generate();
+		}
+	}
+
 	void OnMouseDown () {
 		if (EventSystem.current.IsPointerOverGameObject()) {
 			// we're over a UI element... peace out
 			return;
     	}
 		if (buildPanelController.instance.selectedTool != null) {
-			if (buildPanelController.instance.selectedTool.name == "Room") {
-				if (currentRoom == null) {
-					if (gameController.instance.rhypherium.amount > room.cost) {
-						buildRoom(room.prefab);
-						renderer.material.color = builtColour;
-						gameController.instance.rhypherium.amount -= room.cost;
+			foreach (Tool compatibleTool in compatibleTools) {
+				if (buildPanelController.instance.selectedTool == compatibleTool) {
+					if (currentRoom == null) {
+						if (gameController.instance.rhypherium.amount > room.cost) {
+							buildRoom(room.prefab);
+							renderer.material.color = builtColour;
+							gameController.instance.rhypherium.amount -= room.cost;
+						}
 					}
 				}
 			}

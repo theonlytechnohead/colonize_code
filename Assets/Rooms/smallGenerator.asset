@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Small generator
   cost: 50
-  prefab: {fileID: 0}
-  generator: {fileID: 0}
+  prefab: {fileID: 1191088727645104, guid: 8269a25364a64814c9719118361bd2d2, type: 2}
+  generator: {fileID: 11400000, guid: 9ed38c526e81faa448c9701100039285, type: 2}

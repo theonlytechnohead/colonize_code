@@ -93,9 +93,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114597899397404990
@@ -112,6 +112,9 @@ MonoBehaviour:
   defaultStructure: {fileID: 1144012145650252, guid: 3ba6a290c00eb4afda559bc361884974,
     type: 2}
   roomHolder: {fileID: 1787324698552790, guid: 2fe0eb6e85b1842f1b844f2934dc45d1, type: 2}
+  compatibleTools:
+  - {fileID: 11400000, guid: 620a1739d968f8a41b65b572a7433b70, type: 2}
+  - {fileID: 11400000, guid: dd7339a7770be874a8748983cf40e8d6, type: 2}
   normalColour: {r: 1, g: 1, b: 1, a: 1}
   highlightColour: {r: 1, g: 0.74509805, b: 0, a: 1}
   builtColour: {r: 0, g: 1, b: 0, a: 1}

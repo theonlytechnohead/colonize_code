@@ -7,16 +7,20 @@ public class gridCell : MonoBehaviour {
 
 	public GameObject defaultStructure;
 	public GameObject roomHolder;
+	public List<Tool> compatibleTools;
 	new private Renderer renderer;
-	private GameObject newRoom;
+	private GameObject childGameObject;
+	private Room childRoom;
 
 	public Color normalColour;
 	public Color highlightColour;
 	public Color builtColour;
 
+	float counter = 0f;
+
 	// Use this for initialization
 	void Start () {
-		buildRoom(defaultStructure);
+		buildGameObject(defaultStructure);
 		renderer = GetComponent<Renderer>();
 	}
 	
@@ -27,13 +31,35 @@ public class gridCell : MonoBehaviour {
 		} else {
 			GetComponent<MeshRenderer>().enabled = false;
 		}
+
+		counter += Time.deltaTime;
+		if (counter >= 1f) {
+			if (childRoom != null) {
+				GeneratorGenerate(childRoom);
+			}
+			counter = 0f;
+		}
 	}
 
-	public void buildRoom (GameObject roomHolder) {
-		newRoom = Instantiate(roomHolder, new Vector3(transform.position.x, transform.position.y + 0.9f, transform.position.z), transform.rotation);
-		newRoom.layer = gameObject.layer;
+	public void buildGameObject (GameObject gameObjectToBuild) {
+		childGameObject = Instantiate(gameObjectToBuild, new Vector3(transform.position.x, transform.position.y + 0.9f, transform.position.z), transform.rotation);
+		childGameObject.layer = gameObject.layer;
 		//newRoom.transform.SetParent(transform);
 		//newRoom.transform.position += new Vector3(0f, 0.5f, 0f);
+	}
+
+	public void buildRoom (Room roomToBuild) {
+		childGameObject = Instantiate(roomToBuild.prefab, new Vector3(transform.position.x, transform.position.y + 0.9f, transform.position.z), transform.rotation);
+		childGameObject.layer = gameObject.layer;
+		childRoom = roomToBuild;
+		//newRoom.transform.SetParent(transform);
+		//newRoom.transform.position += new Vector3(0f, 0.5f, 0f);
+	}
+
+	void GeneratorGenerate (Room room) {
+		if (room.generator != null) {
+			room.generator.Generate();
+		}
 	}
 
 	void OnMouseDown () {
@@ -42,27 +68,33 @@ public class gridCell : MonoBehaviour {
 			return;
     	}
 		if (buildPanelController.instance.selectedTool != null) {
-			if (buildPanelController.instance.selectedTool.name == "Foundation") {
-				if (newRoom == null) {
-					if (gameController.instance.kironide.amount > 10f) {
-						buildRoom(roomHolder);
-						renderer.material.color = builtColour;
-						gameController.instance.kironide.amount -= 10f;
-					} else {
-						// Error feedback somehow stuff can't be bothered right now though
+			foreach (Tool compatibleTool in compatibleTools) {
+				if (buildPanelController.instance.selectedTool == compatibleTool) {
+					if (childGameObject == null) {
+						if (gameController.instance.kironide.amount > 10f) {
+							if (compatibleTool.roomToBuild != null) {
+								buildRoom(compatibleTool.roomToBuild);
+							} else {
+								buildGameObject(compatibleTool.thingToBuild);
+							}
+							renderer.material.color = builtColour;
+							gameController.instance.kironide.amount -= 10f;
+						} else {
+							// Error feedback somehow stuff can't be bothered right now though
+						}
 					}
 				}
-			}	
+			}
 		}
 	}
 	void OnMouseOver () {
 		if (buildPanelController.instance.selectedTool != null) {
-			if (buildPanelController.instance.selectedTool.name == "Foundation") {
-				if (newRoom == null) {
+			foreach (Tool compatibleTool in compatibleTools) {
+				if (buildPanelController.instance.selectedTool == compatibleTool) {
 					renderer.material.color = highlightColour;
+				} else {
+					renderer.material.color = normalColour;
 				}
-			} else {
-				renderer.material.color = normalColour;
 			}
 		} else {
 			renderer.material.color = normalColour;
@@ -72,7 +104,7 @@ public class gridCell : MonoBehaviour {
     	}
 	}
     void OnMouseExit () {
-		if (newRoom == null) {
+		if (childGameObject == null) {
 			renderer.material.color = normalColour;
 		}
     }

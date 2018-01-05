@@ -15,7 +15,7 @@ public class Tool : ScriptableObject {
 			roomController roomController = clickedObject.GetComponent<roomController>();
 			if (gridCell != null) {
 				if (thingToBuild != null) {
-					gridCell.buildRoom(thingToBuild);
+					gridCell.buildGameObject(thingToBuild);
 				}
 			} else if (roomController != null) {
 				roomController.buildRoom(roomToBuild.prefab);
