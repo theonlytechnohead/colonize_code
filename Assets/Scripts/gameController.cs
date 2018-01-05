@@ -31,11 +31,17 @@ public class gameController : MonoBehaviour {
 
 	// Resources
 	public float oxygen = 0f;
+	public float maxOxygen = 100f;
 	public float water = 0f;
+	public float maxWater = 100f;
 	public float food = 0f;
+	public float maxFood = 100f;
 	public float power = 0f;
+	public float maxPower = 100f;
 	public float kironide = 0f;
+	public float maxKironide = 100f;
 	public float rhypherium = 0f;
+	public float maxRhypherium = 10f;
 
 
 	[HideInInspector]
@@ -138,13 +144,13 @@ public class gameController : MonoBehaviour {
 		sun.intensity = dayProgress;
 		//sun.intensity = 0.01f;
 
-		// Resource rounding
-		oxygen = Mathf.Round(oxygen * 100f) / 100f;
-		water = Mathf.Round(water * 100f) / 100f;
-		food = Mathf.Round(food * 100f) / 100f;
-		power = Mathf.Round(power * 100f) / 100f;
-		kironide = Mathf.Round(kironide * 100f) / 100f;
-		rhypherium = Mathf.Round(rhypherium * 100f) / 100f;
+		// Resource clamping
+		oxygen = Mathf.Clamp(oxygen, 0f, maxOxygen);
+		food = Mathf.Clamp(food, 0f, maxFood);
+		water = Mathf.Clamp(water, 0f, maxWater);
+		power = Mathf.Clamp(power, 0f, maxPower);
+		kironide = Mathf.Clamp(kironide, 0f, maxKironide);
+		rhypherium = Mathf.Clamp(rhypherium, 0f, maxRhypherium);
 	}
 
 	void UpdateTemperature () {
