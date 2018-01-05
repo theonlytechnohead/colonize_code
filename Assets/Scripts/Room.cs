@@ -7,4 +7,6 @@ public class Room : ScriptableObject {
 	public int cost;
 	//public List<resource> resourcesRequired;
 	public GameObject prefab;
+	public Generator generator;
+
 }

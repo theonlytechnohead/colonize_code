@@ -43,35 +43,29 @@ public class resourcePanelController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		gameController.instance.oxygen = Mathf.Round(gameController.instance.oxygen * 100f) / 100f;
-		gameController.instance.water = Mathf.Round(gameController.instance.water * 100f) / 100f;
-		gameController.instance.food = Mathf.Round(gameController.instance.food * 100f) / 100f;
-		gameController.instance.power = Mathf.Round(gameController.instance.power * 100f) / 100f;
-		gameController.instance.kironide = Mathf.Round(gameController.instance.kironide * 1f) / 1f;
-		gameController.instance.rhypherium = Mathf.Round(gameController.instance.rhypherium * 100f) / 100f;
-		oxygen.text = "Oxygen: " + gameController.instance.oxygen;
-		oxygenSlider.maxValue = gameController.instance.maxOxygen;
-		oxygenSlider.value = gameController.instance.oxygen;
+		oxygen.text = "Oxygen\n" + gameController.instance.oxygen.amount;
+		oxygenSlider.maxValue = gameController.instance.oxygen.maxAmount;
+		oxygenSlider.value = gameController.instance.oxygen.amount;
 
-		water.text = "Water: " + gameController.instance.water;
-		waterSlider.maxValue = gameController.instance.maxWater;
-		waterSlider.value = gameController.instance.water;
+		water.text = "Water\n" + gameController.instance.water.amount;
+		waterSlider.maxValue = gameController.instance.water.maxAmount;
+		waterSlider.value = gameController.instance.water.amount;
 
-		food.text = "Food: " + gameController.instance.food;
-		foodSlider.maxValue = gameController.instance.maxFood;
-		foodSlider.value = gameController.instance.food;
+		food.text = "Food\n" + gameController.instance.food.amount;
+		foodSlider.maxValue = gameController.instance.food.maxAmount;
+		foodSlider.value = gameController.instance.food.amount;
 
-		power.text = "Power: " + gameController.instance.power;
-		powerSlider.maxValue = gameController.instance.maxPower;
-		powerSlider.value = gameController.instance.power;
+		power.text = "Power\n" + gameController.instance.power.amount;
+		powerSlider.maxValue = gameController.instance.power.maxAmount;
+		powerSlider.value = gameController.instance.power.amount;
 
-		kironide.text = "Kironide: " + gameController.instance.kironide;
-		kironideSlider.maxValue = gameController.instance.maxKironide;
-		kironideSlider.value = gameController.instance.kironide;
+		kironide.text = "Kironide\n" + Mathf.Round(gameController.instance.kironide.amount);
+		kironideSlider.maxValue = gameController.instance.kironide.maxAmount;
+		kironideSlider.value = gameController.instance.kironide.amount;
 
-		rypherium.text = "Rhypherium: " + gameController.instance.rhypherium;
-		rhypheriumSlider.maxValue = gameController.instance.maxRhypherium;
-		rhypheriumSlider.value = gameController.instance.rhypherium;
+		rypherium.text = "Rhypherium\n" + gameController.instance.rhypherium.amount;
+		rhypheriumSlider.maxValue = gameController.instance.rhypherium.maxAmount;
+		rhypheriumSlider.value = gameController.instance.rhypherium.amount;
 
 		visible = buildPanelController.instance.visible;
 		if (visible) {

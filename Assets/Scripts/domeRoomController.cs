@@ -34,10 +34,10 @@ public class domeRoomController : MonoBehaviour {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Room") {
 				if (currentRoom == null) {
-					if (gameController.instance.rhypherium >= room.cost) {
+					if (gameController.instance.rhypherium.amount >= room.cost) {
 						buildRoom(room.prefab);
 						renderer.material.color = builtColour;
-						gameController.instance.rhypherium -= room.cost;
+						gameController.instance.rhypherium.amount -= room.cost;
 					}
 				}
 			}

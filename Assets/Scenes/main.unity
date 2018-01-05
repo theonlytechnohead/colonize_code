@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 5, y: 0, z: 5, w: 0}
   m_textInfo:
     textComponent: {fileID: 131725381}
     characterCount: 10
@@ -3960,7 +3960,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 5, y: 0, z: 5, w: 0}
   m_textInfo:
     textComponent: {fileID: 456108342}
     characterCount: 8
@@ -7482,7 +7482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3602941, g: 0.85193074, b: 1, a: 0.49019608}
+  m_Color: {r: 0.6684305, g: 0.12326991, b: 0.83823526, a: 0.49019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9167,7 +9167,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 5, y: 0, z: 5, w: 0}
   m_textInfo:
     textComponent: {fileID: 1397846688}
     characterCount: 7
@@ -9320,7 +9320,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 5, y: 0, z: 5, w: 0}
   m_textInfo:
     textComponent: {fileID: 1399108309}
     characterCount: 5
@@ -9757,7 +9757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3602941, g: 0.85193074, b: 1, a: 0.49019608}
+  m_Color: {r: 0.9264706, g: 0.90523505, b: 0.1566825, a: 0.49019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10719,7 +10719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3602941, g: 0.85193074, b: 1, a: 0.49019608}
+  m_Color: {r: 0.15603374, g: 0.8161765, b: 0.24694552, a: 0.49019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -12096,7 +12096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3602941, g: 0.85193074, b: 1, a: 0.49019608}
+  m_Color: {r: 0.3602941, g: 0.447, b: 1, a: 0.49019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -12263,18 +12263,12 @@ MonoBehaviour:
   time: 0
   dayProgress: 0
   sun: {fileID: 1446403415}
-  oxygen: 0
-  maxOxygen: 10
-  water: 0
-  maxWater: 100
-  food: 0
-  maxFood: 100
-  power: 0
-  maxPower: 100
-  kironide: 0
-  maxKironide: 100
-  rhypherium: 0
-  maxRhypherium: 10
+  oxygen: {fileID: 11400000, guid: 780d5f7adb08fa44391686eed4ab44e0, type: 2}
+  water: {fileID: 11400000, guid: 4f2ab1b15be8bae4db3ecb4305d8af88, type: 2}
+  food: {fileID: 11400000, guid: fa60ce1e6615cc04bb2cac8fcf457bb6, type: 2}
+  power: {fileID: 11400000, guid: 893764032ec066947bc7d4c8c884e395, type: 2}
+  kironide: {fileID: 11400000, guid: 467f5ba942bdf3546bed250ab5f0b071, type: 2}
+  rhypherium: {fileID: 11400000, guid: 6e6bee7f6e3545d4ba50ea3eb25fb737, type: 2}
   outsideTemperature: -20
   insideTemperature: 20
 --- !u!4 &1860609892
@@ -12907,7 +12901,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 5, y: 0, z: 5, w: 0}
   m_textInfo:
     textComponent: {fileID: 1916147370}
     characterCount: 5
@@ -14251,7 +14245,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 5, y: 0, z: 5, w: 0}
   m_textInfo:
     textComponent: {fileID: 2070362963}
     characterCount: 4

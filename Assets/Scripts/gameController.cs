@@ -30,18 +30,12 @@ public class gameController : MonoBehaviour {
 	public Light sun;
 
 	// Resources
-	public float oxygen = 0f;
-	public float maxOxygen = 100f;
-	public float water = 0f;
-	public float maxWater = 100f;
-	public float food = 0f;
-	public float maxFood = 100f;
-	public float power = 0f;
-	public float maxPower = 100f;
-	public float kironide = 0f;
-	public float maxKironide = 100f;
-	public float rhypherium = 0f;
-	public float maxRhypherium = 10f;
+	public Resource oxygen;
+	public Resource water;
+	public Resource food;
+	public Resource power;
+	public Resource kironide;
+	public Resource rhypherium;
 
 
 	[HideInInspector]
@@ -144,13 +138,24 @@ public class gameController : MonoBehaviour {
 		sun.intensity = dayProgress;
 		//sun.intensity = 0.01f;
 
-		// Resource clamping
-		oxygen = Mathf.Clamp(oxygen, 0f, maxOxygen);
-		food = Mathf.Clamp(food, 0f, maxFood);
-		water = Mathf.Clamp(water, 0f, maxWater);
-		power = Mathf.Clamp(power, 0f, maxPower);
-		kironide = Mathf.Clamp(kironide, 0f, maxKironide);
-		rhypherium = Mathf.Clamp(rhypherium, 0f, maxRhypherium);
+		// Resource stuffs
+		oxygen.amount = Mathf.Clamp(oxygen.amount, 0f, oxygen.maxAmount);
+		oxygen.amount = Mathf.Round(oxygen.amount * 100f) / 100f;
+
+		water.amount = Mathf.Clamp(water.amount, 0f, water.maxAmount);
+		water.amount = Mathf.Round(water.amount * 100f) / 100f;
+
+		food.amount = Mathf.Clamp(food.amount, 0f, food.maxAmount);
+		food.amount = Mathf.Round(food.amount * 100f) / 100f;
+
+		power.amount = Mathf.Clamp(power.amount, 0f, power.maxAmount);
+		power.amount = Mathf.Round(power.amount * 100f) / 100f;
+
+		kironide.amount = Mathf.Clamp(kironide.amount, 0f, kironide.maxAmount);
+		kironide.amount = Mathf.Round(kironide.amount * 100f) / 100f;
+
+		rhypherium.amount = Mathf.Clamp(rhypherium.amount, 0f, rhypherium.maxAmount);
+		rhypherium.amount = Mathf.Round(rhypherium.amount * 100f) / 100f;
 	}
 
 	void UpdateTemperature () {
@@ -158,17 +163,17 @@ public class gameController : MonoBehaviour {
 		float newInTemp = insideTemperature;
 		newInTemp = Mathf.Lerp(newInTemp, newOutTemp, Time.deltaTime);
 		if (tempPanelController.instance.venting) {
-			if (power > 0.1f) {
+			if (power.amount > 0.1f) {
 				newInTemp -= Random.Range(2f, 4f);
-				power -= 0.1f;
+				power.amount -= 0.1f;
 				tempPanelController.instance.updateLights();
 			} else {
 				tempPanelController.instance.errorLight("vent");
 			}
 		} else if (tempPanelController.instance.heating) {
-			if (power > 1f) {
+			if (power.amount > 1f) {
 				newInTemp += Random.Range(1.5f, 4f);
-				power -= 1f;
+				power.amount -= 1f;
 				tempPanelController.instance.updateLights();
 			} else {
 				tempPanelController.instance.errorLight("heat");

@@ -66,7 +66,12 @@ public class dirt : MonoBehaviour {
 	IEnumerator destroyAfterSeconds (int seconds) {
 		yield return new WaitForSeconds(seconds);
 		Instantiate(dirtExplodeEffect, transform.position, transform.rotation);
-		gameController.instance.kironide += Random.Range(15f, 20f);
+		float kironideDug = Random.Range(15f, 20f);
+		if (gameController.instance.kironide.amount + kironideDug <= gameController.instance.kironide.maxAmount) {
+			gameController.instance.kironide.amount += kironideDug;
+		} else {
+			gameController.instance.kironide.amount += gameController.instance.kironide.maxAmount - gameController.instance.kironide.amount;
+		}
 		Destroy(gameObject);
 	}
 }
