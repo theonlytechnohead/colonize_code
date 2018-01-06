@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d650b7a711f64787a000765f64bcb2e, type: 3}
-  m_Name: Test Room
+  m_Name: basicRoom
   m_EditorClassIdentifier: 
-  name: Test
+  name: Basic room
   resourceRequired: {fileID: 11400000, guid: 6e6bee7f6e3545d4ba50ea3eb25fb737, type: 2}
-  resourceAmount: 15
+  resourceAmount: 10
   prefab: {fileID: 1200884239358646, guid: 4130dd00cf8bb4c74b3c85825b7e5f9f, type: 2}
   generator: {fileID: 0}
