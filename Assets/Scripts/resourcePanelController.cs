@@ -68,7 +68,7 @@ public class resourcePanelController : MonoBehaviour {
 		rhypheriumSlider.maxValue = gameController.instance.rhypherium.maxAmount;
 		rhypheriumSlider.value = gameController.instance.rhypherium.amount;
 
-		population.text = gameController.instance.population.amount + "\n" + gameController.instance.population.maxAmount;
+		population.text = gameController.instance.population.amount.ToString();
 
 		visible = buildPanelController.instance.visible;
 		if (visible) {
