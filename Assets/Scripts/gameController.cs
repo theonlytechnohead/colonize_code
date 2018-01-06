@@ -36,6 +36,7 @@ public class gameController : MonoBehaviour {
 	public Resource power;
 	public Resource kironide;
 	public Resource rhypherium;
+	public Resource population;
 
 
 	[HideInInspector]
@@ -69,6 +70,7 @@ public class gameController : MonoBehaviour {
 		power.amount = 0f;
 		kironide.amount = 0f;
 		rhypherium.amount = 0f;
+		population.amount = 0f;
 	}
 	
 	// Update is called once per frame
@@ -163,6 +165,9 @@ public class gameController : MonoBehaviour {
 
 		rhypherium.amount = Mathf.Clamp(rhypherium.amount, 0f, rhypherium.maxAmount);
 		rhypherium.amount = Mathf.Round(rhypherium.amount * 100f) / 100f;
+		
+		population.amount = (int)Mathf.Clamp(population.amount, 0f, population.maxAmount);
+		population.amount = Mathf.Round(population.amount * 100) / 100;
 	}
 
 	void UpdateTemperature () {

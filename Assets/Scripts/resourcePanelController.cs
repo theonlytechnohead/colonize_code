@@ -23,6 +23,7 @@ public class resourcePanelController : MonoBehaviour {
 	public Slider kironideSlider;
 	public TextMeshProUGUI rypherium;
 	public Slider rhypheriumSlider;
+	public TextMeshProUGUI population;
 
 	#region Singleton
 	public static resourcePanelController instance;
@@ -66,6 +67,8 @@ public class resourcePanelController : MonoBehaviour {
 		rypherium.text = "Rhypherium\n" + gameController.instance.rhypherium.amount;
 		rhypheriumSlider.maxValue = gameController.instance.rhypherium.maxAmount;
 		rhypheriumSlider.value = gameController.instance.rhypherium.amount;
+
+		population.text = gameController.instance.population.amount + "\n" + gameController.instance.population.maxAmount;
 
 		visible = buildPanelController.instance.visible;
 		if (visible) {
