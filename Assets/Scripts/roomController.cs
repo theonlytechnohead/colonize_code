@@ -56,13 +56,19 @@ public class roomController : MonoBehaviour {
 			return;
     	}
 		if (buildPanelController.instance.selectedTool != null) {
-			foreach (Tool compatibleTool in compatibleTools) {
-				if (buildPanelController.instance.selectedTool == compatibleTool) {
-					if (currentRoom == null) {
-						if (gameController.instance.rhypherium.amount > room.cost) {
+			if (CheckCompatibleTool()) {
+				if (currentRoom == null) {
+					if (room.resourceRequired == gameController.instance.rhypherium) {
+						if (gameController.instance.rhypherium.amount >= room.resourceAmount) {
 							buildRoom(room.prefab);
 							renderer.material.color = builtColour;
-							gameController.instance.rhypherium.amount -= room.cost;
+							gameController.instance.rhypherium.amount -= room.resourceAmount;
+						}
+					} else if (room.resourceRequired == gameController.instance.kironide) {
+						if (gameController.instance.kironide.amount >= room.resourceAmount) {
+							buildRoom(room.prefab);
+							renderer.material.color = builtColour;
+							gameController.instance.kironide.amount -= room.resourceAmount;
 						}
 					}
 				}
@@ -71,12 +77,8 @@ public class roomController : MonoBehaviour {
 	}
 	void OnMouseOver () {
 		if (buildPanelController.instance.selectedTool != null) {
-			if (buildPanelController.instance.selectedTool.name == "Room") {
-				if (currentRoom == null) {
-					renderer.material.color = highlightColour;
-				}
-			} else {
-				renderer.material.color = normalColour;
+			if (CheckCompatibleTool()) {
+				renderer.material.color = highlightColour;
 			}
 		} else {
 			renderer.material.color = normalColour;
@@ -90,4 +92,13 @@ public class roomController : MonoBehaviour {
 			renderer.material.color = normalColour;
 		}
     }
+
+	bool CheckCompatibleTool () {
+		foreach (Tool compatibleTool in compatibleTools) {
+			if (buildPanelController.instance.selectedTool == compatibleTool) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

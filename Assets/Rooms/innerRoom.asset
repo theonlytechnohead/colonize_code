@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: innerRoom
   m_EditorClassIdentifier: 
   name: innerRoom
-  cost: 0
+  resourceRequired: {fileID: 11400000, guid: 6e6bee7f6e3545d4ba50ea3eb25fb737, type: 2}
+  resourceAmount: 5
   prefab: {fileID: 1893773167523660, guid: cdc73f15ea9cef24b9af6516b1ab0ad8, type: 2}
+  generator: {fileID: 0}

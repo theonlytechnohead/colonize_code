@@ -115,6 +115,7 @@ MonoBehaviour:
   compatibleTools:
   - {fileID: 11400000, guid: 620a1739d968f8a41b65b572a7433b70, type: 2}
   - {fileID: 11400000, guid: dd7339a7770be874a8748983cf40e8d6, type: 2}
+  - {fileID: 11400000, guid: 96879979bf63d374298803dc3a3a681b, type: 2}
   normalColour: {r: 1, g: 1, b: 1, a: 1}
   highlightColour: {r: 1, g: 0.74509805, b: 0, a: 1}
   builtColour: {r: 0, g: 1, b: 0, a: 1}

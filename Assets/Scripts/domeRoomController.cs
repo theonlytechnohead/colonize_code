@@ -34,10 +34,18 @@ public class domeRoomController : MonoBehaviour {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Room") {
 				if (currentRoom == null) {
-					if (gameController.instance.rhypherium.amount >= room.cost) {
-						buildRoom(room.prefab);
-						renderer.material.color = builtColour;
-						gameController.instance.rhypherium.amount -= room.cost;
+					if (room.resourceRequired = gameController.instance.rhypherium) {
+						if (gameController.instance.rhypherium.amount >= room.resourceAmount) {
+							buildRoom(room.prefab);
+							renderer.material.color = builtColour;
+							gameController.instance.rhypherium.amount -= room.resourceAmount;
+						}
+					} else if (room.resourceRequired = gameController.instance.kironide) {
+						if (gameController.instance.kironide.amount >= room.resourceAmount) {
+							buildRoom(room.prefab);
+							renderer.material.color = builtColour;
+							gameController.instance.kironide.amount -= room.resourceAmount;
+						}
 					}
 				}
 			}

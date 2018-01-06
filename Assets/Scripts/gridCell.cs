@@ -68,33 +68,19 @@ public class gridCell : MonoBehaviour {
 			return;
     	}
 		if (buildPanelController.instance.selectedTool != null) {
-			foreach (Tool compatibleTool in compatibleTools) {
-				if (buildPanelController.instance.selectedTool == compatibleTool) {
-					if (childGameObject == null) {
-						if (gameController.instance.kironide.amount > 10f) {
-							if (compatibleTool.roomToBuild != null) {
-								buildRoom(compatibleTool.roomToBuild);
-							} else {
-								buildGameObject(compatibleTool.thingToBuild);
-							}
-							renderer.material.color = builtColour;
-							gameController.instance.kironide.amount -= 10f;
-						} else {
-							// Error feedback somehow stuff can't be bothered right now though
-						}
-					}
+			if (CheckCompatibleTool()) {
+				if (buildPanelController.instance.selectedTool.roomToBuild != null) {
+					buildRoom(buildPanelController.instance.selectedTool.roomToBuild);
+				} else {
+					buildGameObject(buildPanelController.instance.selectedTool.thingToBuild);
 				}
 			}
 		}
 	}
 	void OnMouseOver () {
 		if (buildPanelController.instance.selectedTool != null) {
-			foreach (Tool compatibleTool in compatibleTools) {
-				if (buildPanelController.instance.selectedTool == compatibleTool) {
-					renderer.material.color = highlightColour;
-				} else {
-					renderer.material.color = normalColour;
-				}
+			if (CheckCompatibleTool()) {
+				renderer.material.color = highlightColour;
 			}
 		} else {
 			renderer.material.color = normalColour;
@@ -104,8 +90,15 @@ public class gridCell : MonoBehaviour {
     	}
 	}
     void OnMouseExit () {
-		if (childGameObject == null) {
-			renderer.material.color = normalColour;
-		}
+		renderer.material.color = normalColour;
     }
+
+	bool CheckCompatibleTool () {
+		foreach (Tool compatibleTool in compatibleTools) {
+			if (buildPanelController.instance.selectedTool == compatibleTool) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

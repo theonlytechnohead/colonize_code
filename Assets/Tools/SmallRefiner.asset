@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d650b7a711f64787a000765f64bcb2e, type: 3}
-  m_Name: Test Room
+  m_Script: {fileID: 11500000, guid: 13b0e46b66975e947b952b1ed0dc88f8, type: 3}
+  m_Name: SmallRefiner
   m_EditorClassIdentifier: 
-  name: Test
-  cost: 10
-  prefab: {fileID: 1200884239358646, guid: 4130dd00cf8bb4c74b3c85825b7e5f9f, type: 2}
+  build: 1
+  thingToBuild: {fileID: 0}
+  roomToBuild: {fileID: 11400000, guid: d6a42b5664166ed4bac9242f6c976d9a, type: 2}

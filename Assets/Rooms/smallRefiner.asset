@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d650b7a711f64787a000765f64bcb2e, type: 3}
-  m_Name: outerRoom
+  m_Name: smallRefiner
   m_EditorClassIdentifier: 
-  name: OuterRoom
+  name: Small refiner
   resourceRequired: {fileID: 11400000, guid: 467f5ba942bdf3546bed250ab5f0b071, type: 2}
-  resourceAmount: 5
-  prefab: {fileID: 1353686753075376, guid: a2f2d6fc72bf4e043b1db8af7c0db8da, type: 2}
-  generator: {fileID: 0}
+  resourceAmount: 10
+  prefab: {fileID: 1191088727645104, guid: 8269a25364a64814c9719118361bd2d2, type: 2}
+  generator: {fileID: 11400000, guid: 9731bba564a6a234c99d541fbac6215d, type: 2}
