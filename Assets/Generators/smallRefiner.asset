@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3065da88805ff8442b3139fd87f311e4, type: 3}
   m_Name: smallRefiner
   m_EditorClassIdentifier: 
-  resourceRequired: {fileID: 11400000, guid: 467f5ba942bdf3546bed250ab5f0b071, type: 2}
-  resourceRequiredAmount: 10
-  resourceGenerated: {fileID: 11400000, guid: 6e6bee7f6e3545d4ba50ea3eb25fb737, type: 2}
-  resourceGeneratedAmount: 2
-  powerRequired: 10
+  resourcesRequired:
+  - {fileID: 11400000, guid: 770134660f8c55949b5c15f5dd33c4c1, type: 2}
+  - {fileID: 11400000, guid: 1db161c331f2e6c499c909c69e96c720, type: 2}
+  resourcesGenerated:
+  - {fileID: 11400000, guid: 430ce1a4807b7064a8baa623b4cb9ece, type: 2}

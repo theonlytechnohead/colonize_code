@@ -8,6 +8,8 @@ public class Tool : ScriptableObject {
 	public bool build;
 	public GameObject thingToBuild;
 	public Room roomToBuild;
+	public List<ResourceAndAmount> resourcesRequired;
+	public List<ResourceAndAmount> resourceProduced;
 
 	public void Action(GameObject clickedObject) {
 		if (build) {
@@ -24,5 +26,4 @@ public class Tool : ScriptableObject {
 			Destroy(clickedObject.gameObject);
 		}
 	}
-
 }
