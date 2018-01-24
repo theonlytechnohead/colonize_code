@@ -19,7 +19,7 @@ public class cameraController : MonoBehaviour {
 			Debug.LogWarning("More than one instance of mainCamera found!");
 			return;
 		}
-		mainCamera = GameObject.Find("Camera").GetComponent<Camera>();
+		mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		if (instance != null) {
 			Debug.LogWarning("More than one instance of cameraController found!");
 			return;
@@ -74,7 +74,7 @@ public class cameraController : MonoBehaviour {
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 		}
-		
+
 		// Applying scrolling to zoom FORWARD/IN (the CENTRE of the screen, not up/down!)
 		float scroll = Input.GetAxis("Mouse ScrollWheel");
 		pos.y -= scroll * scrollSpeed * 30f * Time.deltaTime;
