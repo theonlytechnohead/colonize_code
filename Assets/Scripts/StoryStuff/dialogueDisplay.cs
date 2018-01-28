@@ -6,6 +6,7 @@ using TMPro;
 
 public class dialogueDisplay : MonoBehaviour {
 
+	public GameObject fadeStuff;
 	public TextMeshProUGUI UI;
 	public Dialogue dialogue;
 	bool fadeIn = false;
@@ -18,9 +19,9 @@ public class dialogueDisplay : MonoBehaviour {
 
 	void Update () {
 		if (fadeIn) {
-			UI.color = Color.Lerp(UI.color, Color.white, Time.deltaTime);
+			UI.color = Color.Lerp(UI.color, Color.white, 1.25f * Time.deltaTime);
 		} else if (fadeOut) {
-			UI.color = Color.Lerp(UI.color, Color.clear, Time.deltaTime);
+			UI.color = Color.Lerp(UI.color, Color.clear, 1.25f * Time.deltaTime);
 		}
 	}
 
@@ -35,6 +36,6 @@ public class dialogueDisplay : MonoBehaviour {
 			yield return new WaitForSeconds(1.5f);
 			fadeOut = false;
 		}
-		SceneManager.LoadScene("main");
+		fadeStuff.GetComponent<worldLoader>().loadScene("main");
 	}
 }
