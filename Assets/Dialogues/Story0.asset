@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ead3c96e6767874ca002a88566217ff, type: 3}
+  m_Name: Story0
+  m_EditorClassIdentifier: 
+  dialogue:
+  - 'The realization of a dream held in hope for a long time: for some, it is years,
+    for others, several decades.'
+  - But for most people, it has been a dream that would only be reckoned centuries
+    in the future.
+  - Now the dream is reality, and science fiction must expand its horizons ever further
+    from our home, because now we have reached further than any imagined possible
+    when the dream began.
+  - We have reached outside of our own planet, and spread further than our solitary
+    moon, to a completely different planet.
+  - "A planet both hot and yet cold, a planet of war and yet peace, a planet that
+    is said to be called\u2026"
+  - the red planet.
