@@ -84,7 +84,12 @@ public class gameController : MonoBehaviour {
 					buildPanelController.instance.toggleVisibility();
 				}
 			} else {
-				Application.Quit();
+				StartCoroutine(confirm.instance.check("Are you sure you want to quit?", (returnedValue) => {
+					if(returnedValue) {
+						Debug.Log("Quitting...");
+						Application.Quit();
+					}
+				}));
 			}
 		}
 		if (Input.GetKeyDown("1")) {
