@@ -9,18 +9,18 @@ public class dirt : MonoBehaviour {
 	public Color highlightColour;
 	public Color dugColour;
 	private bool digging = false;
-	private Renderer renderer;
+	private Renderer rdr;
 	public GameObject dirtExplodeEffect;
 
 	// Use this for initialization
 	void Start () {
-		renderer = GetComponent<Renderer>();
+		rdr = GetComponent<Renderer>();
 		transform.position += new Vector3(0f, 1.5f, 0f);
 	}
 
 	void Update () {
 		if (digging) {
-			renderer.material.color = Color.Lerp(renderer.material.color, dugColour, 0.2f * Time.deltaTime);
+			rdr.material.color = Color.Lerp(rdr.material.color, dugColour, 0.2f * Time.deltaTime);
 			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(10, 0, 5), 0.2f * Time.deltaTime);
 			transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(transform.localPosition.x, -5, transform.localPosition.z), 0.2f * Time.deltaTime);
 		}
@@ -34,7 +34,7 @@ public class dirt : MonoBehaviour {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Dig") {
 				digging = true;
-				renderer.material.color = normalColour;
+				rdr.material.color = normalColour;
 				StartCoroutine(destroyAfterSeconds(10));
 			}
 		}		
@@ -45,22 +45,22 @@ public class dirt : MonoBehaviour {
 		}
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Dig") {
-				renderer.material.color = highlightColour;
+				rdr.material.color = highlightColour;
 			} else {
-				renderer.material.color = normalColour;
+				rdr.material.color = normalColour;
 			}
 		} else {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
 		}
 		if (EventSystem.current.IsPointerOverGameObject()) {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
     	}
 	}
     void OnMouseExit () {
 		if (digging) {
 			return;
 		}
-		renderer.material.color = normalColour;
+		rdr.material.color = normalColour;
     }
 
 	IEnumerator destroyAfterSeconds (int seconds) {

@@ -8,7 +8,7 @@ public class roomController : MonoBehaviour {
 	public GameObject currentRoom;
 	public Room room;
 	public List<Tool> compatibleTools;
-	private Renderer renderer;
+	private Renderer rdr;
 
 	public Color normalColour;
 	public Color highlightColour;
@@ -18,7 +18,7 @@ public class roomController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		renderer = GetComponent<Renderer>();
+		rdr = GetComponent<Renderer>();
 		transform.position += new Vector3(0f, 0.25f, 0f);
 		
 	}
@@ -61,13 +61,13 @@ public class roomController : MonoBehaviour {
 					if (room.resourceRequired == gameController.instance.rhypherium) {
 						if (gameController.instance.rhypherium.amount >= room.resourceAmount) {
 							buildRoom(room.prefab);
-							renderer.material.color = builtColour;
+							rdr.material.color = builtColour;
 							gameController.instance.rhypherium.amount -= room.resourceAmount;
 						}
 					} else if (room.resourceRequired == gameController.instance.kironide) {
 						if (gameController.instance.kironide.amount >= room.resourceAmount) {
 							buildRoom(room.prefab);
-							renderer.material.color = builtColour;
+							rdr.material.color = builtColour;
 							gameController.instance.kironide.amount -= room.resourceAmount;
 						}
 					}
@@ -78,18 +78,18 @@ public class roomController : MonoBehaviour {
 	void OnMouseOver () {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (CheckCompatibleTool()) {
-				renderer.material.color = highlightColour;
+				rdr.material.color = highlightColour;
 			}
 		} else {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
 		}
 		if (EventSystem.current.IsPointerOverGameObject()) {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
     	}
 	}
     void OnMouseExit () {
 		if (currentRoom == null) {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
 		}
     }
 

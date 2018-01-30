@@ -7,15 +7,15 @@ public class domeRoomController : MonoBehaviour {
 
 	public GameObject currentRoom;
 	public Room room;
-	private MeshRenderer renderer;
+	private MeshRenderer rdr;
 
 	public Color normalColour;
 	public Color highlightColour;
 	public Color builtColour;
 	
 	void Start () {
-		renderer = GetComponent<MeshRenderer>();
-		renderer.material.color = normalColour;
+		rdr = GetComponent<MeshRenderer>();
+		rdr.material.color = normalColour;
 	}
 
 	public void buildRoom (GameObject roomToBuild) {
@@ -37,13 +37,13 @@ public class domeRoomController : MonoBehaviour {
 					if (room.resourceRequired = gameController.instance.rhypherium) {
 						if (gameController.instance.rhypherium.amount >= room.resourceAmount) {
 							buildRoom(room.prefab);
-							renderer.material.color = builtColour;
+							rdr.material.color = builtColour;
 							gameController.instance.rhypherium.amount -= room.resourceAmount;
 						}
 					} else if (room.resourceRequired = gameController.instance.kironide) {
 						if (gameController.instance.kironide.amount >= room.resourceAmount) {
 							buildRoom(room.prefab);
-							renderer.material.color = builtColour;
+							rdr.material.color = builtColour;
 							gameController.instance.kironide.amount -= room.resourceAmount;
 						}
 					}
@@ -55,21 +55,21 @@ public class domeRoomController : MonoBehaviour {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (buildPanelController.instance.selectedTool.name == "Room") {
 				if (currentRoom == null) {
-					renderer.material.color = highlightColour;
+					rdr.material.color = highlightColour;
 				}
 			} else {
-				renderer.material.color = normalColour;
+				rdr.material.color = normalColour;
 			}
 		} else {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
 		}
 		if (EventSystem.current.IsPointerOverGameObject()) {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
     	}
 	}
     void OnMouseExit () {
 		if (currentRoom == null) {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
 		}
     }
 }
