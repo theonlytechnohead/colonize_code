@@ -20,8 +20,8 @@ public class gameController : MonoBehaviour {
 	public int warpSpeed = 1;
 	public List<Month> months;
 	public GameObject monthText;
-	private Month currentMonth;
-	private int month = 4;
+	public Month currentMonth;
+	public int month = 4;
 
 	public int time = 0;
 	public float dayProgress = 0f;

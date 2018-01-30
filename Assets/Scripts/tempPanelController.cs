@@ -59,6 +59,16 @@ public class tempPanelController : MonoBehaviour {
 		inTemp = gameController.instance.insideTemperature;
 		float outTempFinal = outTemp;
 		float inTempFinal = inTemp;
+
+		// Warning colour stuffs
+		if (inTempFinal >= 28) {
+			GetComponent<Image>().color = Color.red;
+		} else if (inTempFinal <= 12) {
+			GetComponent<Image>().color = Color.cyan;
+		} else {
+			GetComponent<Image>().color = panelDefaultColour;
+		}
+
 		if (stupidTempSystem) {
 			outTempFinal = gameController.instance.outsideTemperature * 1.8f + 32f;
 			inTempFinal = gameController.instance.insideTemperature * 1.8f + 32f;
@@ -81,6 +91,8 @@ public class tempPanelController : MonoBehaviour {
 		if (inTempFinal < 0) {
 			insideIndicator.text = "-";
 		}
+
+		
 
 		if (venting) {
 			pumpIndicator.text = "<";

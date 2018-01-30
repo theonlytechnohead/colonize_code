@@ -8,7 +8,7 @@ public class gridCell : MonoBehaviour {
 	public GameObject defaultStructure;
 	public GameObject roomHolder;
 	public List<Tool> compatibleTools;
-	new private Renderer renderer;
+	private Renderer rdr;
 	private GameObject childGameObject;
 	private Room childRoom;
 
@@ -21,7 +21,7 @@ public class gridCell : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		buildGameObject(defaultStructure);
-		renderer = GetComponent<Renderer>();
+		rdr = GetComponent<Renderer>();
 	}
 	
 	// Update is called once per frame
@@ -80,17 +80,17 @@ public class gridCell : MonoBehaviour {
 	void OnMouseOver () {
 		if (buildPanelController.instance.selectedTool != null) {
 			if (CheckCompatibleTool()) {
-				renderer.material.color = highlightColour;
+				rdr.material.color = highlightColour;
 			}
 		} else {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
 		}
 		if (EventSystem.current.IsPointerOverGameObject()) {
-			renderer.material.color = normalColour;
+			rdr.material.color = normalColour;
     	}
 	}
     void OnMouseExit () {
-		renderer.material.color = normalColour;
+		rdr.material.color = normalColour;
     }
 
 	bool CheckCompatibleTool () {

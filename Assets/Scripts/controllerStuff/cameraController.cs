@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class cameraController : MonoBehaviour {
 	
@@ -76,9 +77,14 @@ public class cameraController : MonoBehaviour {
 		}
 
 		// Applying scrolling to zoom FORWARD/IN (the CENTRE of the screen, not up/down!)
-		float scroll = Input.GetAxis("Mouse ScrollWheel");
-		pos.y -= scroll * scrollSpeed * 30f * Time.deltaTime;
-		pos.z += scroll * scrollSpeed * 30f * Time.deltaTime;
+		if (EventSystem.current.IsPointerOverGameObject()) {
+			// we're over a UI element... peace out
+    	} else {
+			float scroll = Input.GetAxis("Mouse ScrollWheel");
+			pos.y -= scroll * scrollSpeed * 30f * Time.deltaTime;
+			pos.z += scroll * scrollSpeed * 30f * Time.deltaTime;
+		}
+		
 
 		// Revert back into world space so that clamping workings properly, and can be directly applied
 		Vector3 newPos = cameraMoveTarget.transform.TransformPoint(pos);
