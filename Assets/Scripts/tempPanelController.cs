@@ -23,6 +23,7 @@ public class tempPanelController : MonoBehaviour {
 	public bool venting;
 	[HideInInspector]
 	public bool heating;
+	private bool error = false;
 
 	public Color panelDefaultColour;
 	public Color activeColour;
@@ -60,15 +61,6 @@ public class tempPanelController : MonoBehaviour {
 		float outTempFinal = outTemp;
 		float inTempFinal = inTemp;
 
-		// Warning colour stuffs
-		if (inTempFinal >= 28) {
-			GetComponent<Image>().color = Color.red;
-		} else if (inTempFinal <= 12) {
-			GetComponent<Image>().color = Color.cyan;
-		} else {
-			GetComponent<Image>().color = panelDefaultColour;
-		}
-
 		if (stupidTempSystem) {
 			outTempFinal = gameController.instance.outsideTemperature * 1.8f + 32f;
 			inTempFinal = gameController.instance.insideTemperature * 1.8f + 32f;
@@ -91,8 +83,6 @@ public class tempPanelController : MonoBehaviour {
 		if (inTempFinal < 0) {
 			insideIndicator.text = "-";
 		}
-
-		
 
 		if (venting) {
 			pumpIndicator.text = "<";
@@ -134,10 +124,18 @@ public class tempPanelController : MonoBehaviour {
 	}
 	public void errorLight (string button) {
 		GameObject.Find(button + "Button").GetComponent<Image>().color = errorColour;
+		error = true;
 		GetComponent<Image>().color = errorColour;
+		notificationPanelController.instance.AddNotification("Temperature management system", "Temperature adjustments failed! Make sure you have enough power to run the system");
 	}
 	public void updateLights () {
-		GetComponent<Image>().color = panelDefaultColour;
+		if (!error) {
+			if (venting || heating) {
+				GetComponent<Image>().color = activeColour;
+			} else {
+				GetComponent<Image>().color = panelDefaultColour;
+			}
+		}
 		if (venting) {
 			GameObject.Find("ventButton").GetComponent<Image>().color = activeColour;
 		} else if (heating) {
@@ -151,5 +149,6 @@ public class tempPanelController : MonoBehaviour {
 		GameObject.Find("ventButton").GetComponent<Image>().color = normalColour;
 		GameObject.Find("heatButton").GetComponent<Image>().color = normalColour;
 		GameObject.Find("stopButton").GetComponent<Image>().color = normalColour;
+		error = false;
 	}
 }

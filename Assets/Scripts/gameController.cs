@@ -8,6 +8,9 @@ using TMPro;
 public class gameController : MonoBehaviour {
 
 	public Color timeActivatedColour;
+	public Color activeColour;
+	private ColorBlock timeActivatedColourBlock;
+	private ColorBlock normalColourBlock;
 	public Color normalColour;
 
 	// Level
@@ -58,6 +61,7 @@ public class gameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		normalColourBlock = GameObject.Find("NormalSpeedButton").GetComponent<Button>().colors;
 		NormalTime();
 		currentMonth = months[month];
 		monthText.GetComponent<TextMeshProUGUI>().text = currentMonth.name;
@@ -200,30 +204,47 @@ public class gameController : MonoBehaviour {
 		}
 		outsideTemperature = Mathf.RoundToInt(newOutTemp);
 		insideTemperature = Mathf.RoundToInt(newInTemp);
+		if (insideTemperature < 12) {
+			notificationPanelController.instance.AddNotification("Temperature management system", "Temperature too low! Please increase the temperature by heating!");
+		} else if (insideTemperature > 28) {
+			notificationPanelController.instance.AddNotification("Temperature management system", "Temperature too high! Please decrease the temperature by venting!");
+		}
 	}
 
 	public void TripleTime () {
 		warpSpeed = 100;
 		ResetColours();
 		GameObject.Find("TripleSpeedButton").GetComponent<Image>().color = timeActivatedColour;
+		timeActivatedColourBlock = GameObject.Find("TripleSpeedButton").GetComponent<Button>().colors;
+		timeActivatedColourBlock.normalColor = activeColour;
+		GameObject.Find("TripleSpeedButton").GetComponent<Button>().colors = timeActivatedColourBlock;
 	}
 
 	public void DoubleTime () {
 		warpSpeed = 10;
 		ResetColours();
 		GameObject.Find("DoubleSpeedButton").GetComponent<Image>().color = timeActivatedColour;
+		timeActivatedColourBlock = GameObject.Find("DoubleSpeedButton").GetComponent<Button>().colors;
+		timeActivatedColourBlock.normalColor = activeColour;
+		GameObject.Find("DoubleSpeedButton").GetComponent<Button>().colors = timeActivatedColourBlock;
 	}
 
 	public void NormalTime () {
 		warpSpeed = 1;
 		ResetColours();
 		GameObject.Find("NormalSpeedButton").GetComponent<Image>().color = timeActivatedColour;
+		timeActivatedColourBlock = GameObject.Find("NormalSpeedButton").GetComponent<Button>().colors;
+		timeActivatedColourBlock.normalColor = activeColour;
+		GameObject.Find("NormalSpeedButton").GetComponent<Button>().colors = timeActivatedColourBlock;
 	}
 
 	public void PauseTime () {
 		warpSpeed = 0;
 		ResetColours();
 		GameObject.Find("PauseButton").GetComponent<Image>().color = timeActivatedColour;
+		timeActivatedColourBlock = GameObject.Find("PauseButton").GetComponent<Button>().colors;
+		timeActivatedColourBlock.normalColor = activeColour;
+		GameObject.Find("PauseButton").GetComponent<Button>().colors = timeActivatedColourBlock;
 	}
 
 	public void ResetColours () {
@@ -232,5 +253,9 @@ public class gameController : MonoBehaviour {
 		GameObject.Find("DoubleSpeedButton").GetComponent<Image>().color = normalColour;
 		GameObject.Find("NormalSpeedButton").GetComponent<Image>().color = normalColour;
 		GameObject.Find("PauseButton").GetComponent<Image>().color = normalColour;
+		GameObject.Find("TripleSpeedButton").GetComponent<Button>().colors = normalColourBlock;
+		GameObject.Find("DoubleSpeedButton").GetComponent<Button>().colors = normalColourBlock;
+		GameObject.Find("NormalSpeedButton").GetComponent<Button>().colors = normalColourBlock;
+		GameObject.Find("PauseButton").GetComponent<Button>().colors = normalColourBlock;
 	}
 }

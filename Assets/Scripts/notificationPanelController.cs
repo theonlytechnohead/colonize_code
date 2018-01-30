@@ -37,6 +37,14 @@ public class notificationPanelController : MonoBehaviour {
 		//AddNotification("Test at runtime", "Testing testing testing testing the message stuff at runtime!");
 		//AddNotification("Test 2", "Testing again, testing again, testing again!");
 	}
+
+	public void ClearNotifications () {
+		foreach (GameObject notification in notifications) {
+			Destroy(notification);
+		}
+		notificationsQueue.Clear();
+		notifications.Clear();
+	}
 	
 	public void SetMouseOverState (bool state) {
 		visible = state;
@@ -59,7 +67,7 @@ public class notificationPanelController : MonoBehaviour {
 			
 		}
 		GameObject newNotification = Instantiate(notificationTemplate);
-		newNotification.GetComponent<Notification>().time = gameController.instance.time.ToString() + ", ";
+		newNotification.GetComponent<Notification>().time = gameController.instance.time.ToString() + " " + gameController.instance.currentMonth.name + ", ";
 		newNotification.GetComponent<Notification>().title = title + ": ";
 		newNotification.GetComponent<Notification>().content = content;
 		newNotification.transform.SetParent(contentContainer.transform, false);
