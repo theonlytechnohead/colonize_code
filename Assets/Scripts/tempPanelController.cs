@@ -25,6 +25,9 @@ public class tempPanelController : MonoBehaviour {
 	public bool heating;
 	private bool error = false;
 
+
+	private ColorBlock activeColourBlock;
+	private ColorBlock normalColourBlock;
 	public Color panelDefaultColour;
 	public Color activeColour;
 	public Color normalColour;
@@ -51,6 +54,8 @@ public class tempPanelController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		normalColourBlock = GameObject.Find("NormalSpeedButton").GetComponent<Button>().colors;
+		normalColourBlock.normalColor = normalColour;
 		Stop();
 	}
 	
@@ -106,19 +111,28 @@ public class tempPanelController : MonoBehaviour {
 	}
 	public void Vent () {
 		ResetColours();
-		GameObject.Find("ventButton").GetComponent<Image>().color = activeColour;
+		GameObject.Find("ventButton").GetComponent<Image>().color = Color.green;
+		activeColourBlock = GameObject.Find("ventButton").GetComponent<Button>().colors;
+		activeColourBlock.normalColor = activeColour;
+		GameObject.Find("ventButton").GetComponent<Button>().colors = activeColourBlock;
 		venting = true;
 		heating = false;
 	}
 	public void Heat () {
 		ResetColours();
-		GameObject.Find("heatButton").GetComponent<Image>().color = activeColour;
+		GameObject.Find("heatButton").GetComponent<Image>().color = Color.green;
+		activeColourBlock = GameObject.Find("heatButton").GetComponent<Button>().colors;
+		activeColourBlock.normalColor = activeColour;
+		GameObject.Find("heatButton").GetComponent<Button>().colors = activeColourBlock;
 		heating = true;
 		venting = false;
 	}
 	public void Stop () {
 		ResetColours();
-		GameObject.Find("stopButton").GetComponent<Image>().color = activeColour;
+		GameObject.Find("stopButton").GetComponent<Image>().color = Color.green;
+		activeColourBlock = GameObject.Find("stopButton").GetComponent<Button>().colors;
+		activeColourBlock.normalColor = activeColour;
+		GameObject.Find("stopButton").GetComponent<Button>().colors = activeColourBlock;
 		venting = false;
 		heating = false;
 	}
@@ -131,24 +145,27 @@ public class tempPanelController : MonoBehaviour {
 	public void updateLights () {
 		if (!error) {
 			if (venting || heating) {
-				GetComponent<Image>().color = activeColour;
+				GetComponent<Image>().color = Color.green;
 			} else {
 				GetComponent<Image>().color = panelDefaultColour;
 			}
 		}
 		if (venting) {
-			GameObject.Find("ventButton").GetComponent<Image>().color = activeColour;
+			GameObject.Find("ventButton").GetComponent<Image>().color = Color.green;
 		} else if (heating) {
-			GameObject.Find("ventButton").GetComponent<Image>().color = activeColour;
+			GameObject.Find("ventButton").GetComponent<Image>().color = Color.green;
 		} else {
-			GameObject.Find("stopButton").GetComponent<Image>().color = activeColour;
+			GameObject.Find("stopButton").GetComponent<Image>().color = Color.green;
 		}
 	}
 	public void ResetColours () {
 		EventSystem.current.SetSelectedGameObject(null);
-		GameObject.Find("ventButton").GetComponent<Image>().color = normalColour;
-		GameObject.Find("heatButton").GetComponent<Image>().color = normalColour;
-		GameObject.Find("stopButton").GetComponent<Image>().color = normalColour;
+		GameObject.Find("ventButton").GetComponent<Image>().color = Color.white;
+		GameObject.Find("heatButton").GetComponent<Image>().color = Color.white;
+		GameObject.Find("stopButton").GetComponent<Image>().color = Color.white;
+		GameObject.Find("ventButton").GetComponent<Button>().colors = normalColourBlock;
+		GameObject.Find("heatButton").GetComponent<Button>().colors = normalColourBlock;
+		GameObject.Find("stopButton").GetComponent<Button>().colors = normalColourBlock;
 		error = false;
 	}
 }
