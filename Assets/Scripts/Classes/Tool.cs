@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New tool", menuName = "Custom items/Tool")]
 public class Tool : ScriptableObject {
 
+	[System.Serializable]
+	public class ResourceAndAmount {
+		public Resource resource;
+		public int amount;
+	}
+
 	public bool build;
 	public GameObject thingToBuild;
 	public Room roomToBuild;

@@ -14,3 +14,5 @@ MonoBehaviour:
   build: 0
   thingToBuild: {fileID: 0}
   roomToBuild: {fileID: 0}
+  resourcesRequired: []
+  resourceProduced: []

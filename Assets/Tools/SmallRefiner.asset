@@ -14,3 +14,7 @@ MonoBehaviour:
   build: 1
   thingToBuild: {fileID: 0}
   roomToBuild: {fileID: 11400000, guid: d6a42b5664166ed4bac9242f6c976d9a, type: 2}
+  resourcesRequired:
+  - resource: {fileID: 11400000, guid: 467f5ba942bdf3546bed250ab5f0b071, type: 2}
+    amount: 10
+  resourceProduced: []

@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New generator", menuName = "Custom items/Generator")]
 public class Generator : ScriptableObject {
 
+	[System.Serializable]
+	public class ResourceAndAmount {
+		public Resource resource;
+		public int amount;
+	}
+
 	public List<ResourceAndAmount> resourcesRequired;
 	public List<ResourceAndAmount> resourcesGenerated;
 

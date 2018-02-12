@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: smallPower
   m_EditorClassIdentifier: 
   resourcesRequired:
-  - {fileID: 11400000, guid: 73b16eef3a1fbcb4799c97dd160a51ac, type: 2}
+  - resource: {fileID: 11400000, guid: 467f5ba942bdf3546bed250ab5f0b071, type: 2}
+    amount: 10
   resourcesGenerated:
-  - {fileID: 11400000, guid: 1db161c331f2e6c499c909c69e96c720, type: 2}
+  - resource: {fileID: 11400000, guid: 893764032ec066947bc7d4c8c884e395, type: 2}
+    amount: 2
