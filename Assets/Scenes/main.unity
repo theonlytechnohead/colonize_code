@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.25
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1446403415}
-  m_IndirectSpecularColor: {r: 0.14257568, g: 0.114083655, b: 0.10621595, a: 0.25}
+  m_IndirectSpecularColor: {r: 0.14264065, g: 0.11408921, b: 0.10636879, a: 0.25}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -950,7 +950,7 @@ Prefab:
     - target: {fileID: 224564291956351456, guid: d43fbd45b411f654d98ea6248cb71dbf,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 328.33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224564291956351456, guid: d43fbd45b411f654d98ea6248cb71dbf,
         type: 2}
@@ -1250,7 +1250,7 @@ Prefab:
     - target: {fileID: 224564291956351456, guid: d43fbd45b411f654d98ea6248cb71dbf,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 328.33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224564291956351456, guid: d43fbd45b411f654d98ea6248cb71dbf,
         type: 2}
@@ -2789,7 +2789,7 @@ Prefab:
     - target: {fileID: 224564291956351456, guid: d43fbd45b411f654d98ea6248cb71dbf,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 328.33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224564291956351456, guid: d43fbd45b411f654d98ea6248cb71dbf,
         type: 2}
@@ -16709,7 +16709,7 @@ Prefab:
     - target: {fileID: 224564291956351456, guid: d43fbd45b411f654d98ea6248cb71dbf,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 328.33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224564291956351456, guid: d43fbd45b411f654d98ea6248cb71dbf,
         type: 2}
